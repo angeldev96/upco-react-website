@@ -69,19 +69,63 @@ export default function Header() {
       </div>
 
       {/* Navigation bar */}
-      <nav className="w-full" style={{ backgroundColor: '#01c100' }}>
+      <nav className="w-full relative z-40" style={{ backgroundColor: '#01c100' }}>
         <div className="w-full">
           <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-            {/* Desktop menu */}
-            <ul className="hidden md:flex justify-center items-center gap-2 text-sm font-medium text-black flex-1">
-              {MENU.map((item) => (
-                <li key={item.to} className="">
-                  <Link to={item.to} className="hover:text-white hover:bg-black hover:bg-opacity-20 transition-all duration-300 ease-in-out uppercase tracking-wide block py-2 px-3 rounded-sm transform hover:scale-105">
-                    {lang === 'es' ? item.es : item.en}
-                  </Link>
+            {/* Desktop menu with hover/focus dropdowns (centered) */}
+            <div className="hidden md:flex items-center flex-1 justify-center">
+              <ul className="flex items-center gap-8 text-sm font-medium text-black">
+                <li className="relative group">
+                  <button className="uppercase tracking-wide py-2 px-4 rounded-sm transition-transform">{lang === 'es' ? 'Inicio' : 'Home'}</button>
+                  <div className="absolute left-0 top-full mt-0 bg-white shadow-lg rounded-md opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto translate-y-1 group-hover:translate-y-0 transition-all duration-200 ease-out min-w-[220px] z-50">
+                    <ul className="py-2">
+                      <li><Link to="/" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Nosotros' : 'About Us'}</Link></li>
+                      <li><Link to="/gallery" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Imágenes' : 'Images'}</Link></li>
+                    </ul>
+                  </div>
                 </li>
-              ))}
-            </ul>
+
+                <li className="relative group">
+                  <button className="uppercase tracking-wide py-2 px-4 rounded-sm transition-transform">{lang === 'es' ? 'Atención al Cliente' : 'Customer Service'}</button>
+                  <div className="absolute left-0 top-full mt-0 bg-white shadow-lg rounded-md opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto translate-y-1 group-hover:translate-y-0 transition-all duration-200 ease-out min-w-[260px] z-50">
+                    <ul className="py-2">
+                      <li><Link to="/tarifas" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Tarifas vigentes' : 'Current Rates'}</Link></li>
+                      <li><Link to="/procesos" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Procesos (Nuevos Servicios, descuentos tercera edad)' : 'Processes (New Services, senior discounts)'}</Link></li>
+                      <li><Link to="/anonima" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Sección anónima' : 'Anonymous Section'}</Link></li>
+                      <li><Link to="/reclamos" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Reclamos' : 'Complaints'}</Link></li>
+                      <li><Link to="/calculo-consumo" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Calculo de consumo' : 'Consumption Calculator'}</Link></li>
+                      <li><Link to="/oficinas" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Oficinas' : 'Offices'}</Link></li>
+                      <li><Link to="/preguntas" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Preguntas frecuentes' : 'FAQ'}</Link></li>
+                    </ul>
+                  </div>
+                </li>
+
+                <li className="relative group">
+                  <button className="uppercase tracking-wide py-2 px-4 rounded-sm transition-transform">{lang === 'es' ? 'Noticias' : 'News'}</button>
+                  <div className="absolute left-0 top-full mt-0 bg-white shadow-lg rounded-md opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto translate-y-1 group-hover:translate-y-0 transition-all duration-200 ease-out min-w-[220px] z-50">
+                    <ul className="py-2">
+                      <li><Link to="/mantenimientos" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Mantenimientos' : 'Maintenance'}</Link></li>
+                      <li><Link to="/eventos" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Eventos y comunicados' : 'Events & Notices'}</Link></li>
+                      <li><Link to="/campanas" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Contenido de campaña' : 'Campaign Content'}</Link></li>
+                    </ul>
+                  </div>
+                </li>
+
+                <li className="relative group">
+                  <button className="uppercase tracking-wide py-2 px-4 rounded-sm transition-transform">{lang === 'es' ? 'Contactos' : 'Contacts'}</button>
+                  <div className="absolute left-0 top-full mt-0 bg-white shadow-lg rounded-md opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto translate-y-1 group-hover:translate-y-0 transition-all duration-200 ease-out min-w-[220px] z-50">
+                    <ul className="py-2">
+                      <li><a href="https://wa.me/50488281644" className="block px-4 py-2 text-sm">WhatsApp</a></li>
+                      <li><a href="https://facebook.com/UtilaPowerCompany" className="block px-4 py-2 text-sm">Facebook</a></li>
+                      <li><a href="https://instagram.com/upco_hn" className="block px-4 py-2 text-sm">Instagram</a></li>
+                      <li><a href="https://t.me/" className="block px-4 py-2 text-sm">Telegram</a></li>
+                      <li><a href="mailto:info@upco.hn" className="block px-4 py-2 text-sm">Correo</a></li>
+                      <li><a href="tel:+50488281644" className="block px-4 py-2 text-sm">Llamadas / Números fijos</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
 
             {/* Right-side controls */}
             <div className="flex items-center gap-3">
@@ -108,17 +152,47 @@ export default function Header() {
           {open && (
             <div className="md:hidden bg-[#01c100]">
               <ul className="flex flex-col px-4 py-3 gap-1">
-                {MENU.map((item) => (
-                  <li key={item.to}>
-                    <Link
-                      to={item.to}
-                      onClick={() => setOpen(false)}
-                      className="block w-full text-center uppercase tracking-wide py-3 px-2 rounded hover:bg-black hover:bg-opacity-10"
-                    >
-                      {lang === 'es' ? item.es : item.en}
-                    </Link>
-                  </li>
-                ))}
+                <li>
+                  <div className="font-semibold uppercase py-2">{lang === 'es' ? 'Inicio' : 'Home'}</div>
+                  <ul className="pl-3">
+                    <li><Link to="/nosotros" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Nosotros' : 'About Us'}</Link></li>
+                    <li><Link to="/imagenes" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Imágenes' : 'Images'}</Link></li>
+                  </ul>
+                </li>
+
+                <li>
+                  <div className="font-semibold uppercase py-2">{lang === 'es' ? 'Atención al Cliente' : 'Customer Service'}</div>
+                  <ul className="pl-3">
+                    <li><Link to="/tarifas" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Tarifas vigentes' : 'Current Rates'}</Link></li>
+                    <li><Link to="/procesos" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Procesos' : 'Processes'}</Link></li>
+                    <li><Link to="/anonima" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Sección anónima' : 'Anonymous Section'}</Link></li>
+                    <li><Link to="/reclamos" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Reclamos' : 'Complaints'}</Link></li>
+                    <li><Link to="/calculo-consumo" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Calculo de consumo' : 'Consumption Calculator'}</Link></li>
+                    <li><Link to="/oficinas" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Oficinas' : 'Offices'}</Link></li>
+                    <li><Link to="/preguntas" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Preguntas frecuentes' : 'FAQ'}</Link></li>
+                  </ul>
+                </li>
+
+                <li>
+                  <div className="font-semibold uppercase py-2">{lang === 'es' ? 'Noticias' : 'News'}</div>
+                  <ul className="pl-3">
+                    <li><Link to="/mantenimientos" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Mantenimientos' : 'Maintenance'}</Link></li>
+                    <li><Link to="/eventos" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Eventos y comunicados' : 'Events & Notices'}</Link></li>
+                    <li><Link to="/campanas" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Contenido de campaña' : 'Campaign Content'}</Link></li>
+                  </ul>
+                </li>
+
+                <li>
+                  <div className="font-semibold uppercase py-2">{lang === 'es' ? 'Contactos' : 'Contacts'}</div>
+                  <ul className="pl-3">
+                    <li><a href="https://wa.me/50488281644" className="block py-2">WhatsApp</a></li>
+                    <li><a href="https://facebook.com/UtilaPowerCompany" className="block py-2">Facebook</a></li>
+                    <li><a href="https://instagram.com/upco_hn" className="block py-2">Instagram</a></li>
+                    <li><a href="https://t.me/" className="block py-2">Telegram</a></li>
+                    <li><a href="mailto:info@upco.hn" className="block py-2">Correo</a></li>
+                    <li><a href="tel:+50488281644" className="block py-2">Llamadas / Números fijos</a></li>
+                  </ul>
+                </li>
 
                 <li>
                   <div className="flex items-center justify-center gap-3 py-3">
