@@ -1,11 +1,13 @@
 import React, { useContext } from 'react'
 import { LanguageContext } from '../contexts/LanguageContext'
+import useReveal from '../hooks/useReveal'
 
 export default function ContactSection() {
   const { lang } = useContext(LanguageContext)
+  const ref = useReveal()
 
   return (
-    <section className="py-16 bg-gray-50" aria-labelledby="contact-heading">
+  <section ref={ref} className="py-16 bg-gray-50 reveal" aria-labelledby="contact-heading">
       <div className="container mx-auto px-6">
         <div className="text-center mb-8">
           <h2 id="contact-heading" className="text-3xl font-bold">{lang === 'es' ? 'Nuestros Contactos' : 'Our Contacts'}</h2>

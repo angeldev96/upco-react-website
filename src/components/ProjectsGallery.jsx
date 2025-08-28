@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { LanguageContext } from '../contexts/LanguageContext'
+import useReveal from '../hooks/useReveal'
 
 const THUMBS = [
   { src: '/gallery1.jpg', alt: 'Proyecto 1', fallback: 'https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop' },
@@ -10,12 +11,13 @@ const THUMBS = [
 export default function ProjectsGallery() {
   const [index, setIndex] = useState(0)
   const { lang } = useContext(LanguageContext)
+  const ref = useReveal()
 
   function prev() { setIndex((i) => (i - 1 + THUMBS.length) % THUMBS.length) }
   function next() { setIndex((i) => (i + 1) % THUMBS.length) }
 
   return (
-    <section className="py-16">
+  <section ref={ref} className="py-12 reveal" aria-labelledby="projects-heading">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div>

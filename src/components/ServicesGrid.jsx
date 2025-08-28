@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { LanguageContext } from '../contexts/LanguageContext'
+import useReveal from '../hooks/useReveal'
 
 const CARD = ({ title, children }) => (
   <article className="bg-white p-6 shadow-lg rounded">
@@ -22,9 +23,10 @@ const CARD = ({ title, children }) => (
 
 export default function ServicesGrid() {
   const { lang } = useContext(LanguageContext)
+  const ref = useReveal()
 
   return (
-    <section className="py-16 bg-gray-50" aria-labelledby="services-heading">
+  <section ref={ref} className="py-16 bg-gray-50 reveal" aria-labelledby="services-heading">
       <div className="container mx-auto px-6">
         <div className="text-center mb-10">
           <h2 id="services-heading" className="text-2xl md:text-3xl font-bold">{lang === 'es' ? 'Nuestros Servicios' : 'Our Services'}</h2>

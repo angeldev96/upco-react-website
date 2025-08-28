@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { LanguageContext } from '../contexts/LanguageContext'
+import useReveal from '../hooks/useReveal'
 
 // Sample posts array - replace with real data or CMS later
 const POSTS = [
@@ -15,9 +16,10 @@ const POSTS = [
 
 export default function NewsSection() {
   const { lang } = useContext(LanguageContext)
+  const ref = useReveal()
 
   return (
-    <section className="py-16 bg-white" aria-labelledby="news-heading">
+    <section ref={ref} className="py-16 bg-white reveal" aria-labelledby="news-heading">
       <div className="container mx-auto px-6">
         <div className="text-center mb-10">
           <h2 id="news-heading" className="text-2xl md:text-3xl font-bold">{lang === 'es' ? 'Noticias y Actualizaciones UPCO' : 'UPCO News & Updates'}</h2>

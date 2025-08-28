@@ -1,12 +1,14 @@
 import { useContext } from 'react'
 import { LanguageContext } from '../contexts/LanguageContext'
+import useReveal from '../hooks/useReveal'
 
 export default function Footer() {
   const { lang } = useContext(LanguageContext)
+  const ref = useReveal()
 
   return (
     <footer className="bg-[#0b0b0b] text-gray-300">
-      <div className="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div ref={ref} className="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8 reveal">
         <div>
           <img src="/upco.png" alt="UPCO" className="w-20 mb-4" />
           <p className="text-gray-400">{lang === 'es' ? 'UPCO está comprometido a proporcionarte soluciones energéticas. Únete a nuestro viaje hacia un mundo más sostenible.' : 'UPCO is committed to providing you with energy solutions. Join our journey towards a more sustainable world.'}</p>
