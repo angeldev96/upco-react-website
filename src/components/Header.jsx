@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { LanguageContext } from '../contexts/LanguageContext'
 
 const MENU = [
   { to: '/', es: 'INICIO', en: 'HOME' },
@@ -14,23 +15,7 @@ const MENU = [
 ]
 
 export default function Header() {
-  const [lang, setLang] = useState(() => {
-    try {
-      return localStorage.getItem('upco_lang') || 'es'
-    } catch {
-      return 'es'
-    }
-  })
-
-  useEffect(() => {
-    try { localStorage.setItem('upco_lang', lang) } catch {
-      /* ignore */
-    }
-  }, [lang])
-
-  function toggleLang() {
-    setLang((l) => (l === 'es' ? 'en' : 'es'))
-  }
+  const { lang, toggleLang } = useContext(LanguageContext)
 
   return (
     <header className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
@@ -45,6 +30,7 @@ export default function Header() {
               {lang === 'es' ? 'Horario de Apertura: Lun - Dom de 7.00 a 19.00' : 'Opening Hours: Mon - Sun 7:00 AM to 7:00 PM'}
             </span>
           </div>
+
           <div className="flex items-center gap-4">
             <span>{lang === 'es' ? 'Síguenos:' : 'Follow Us:'}</span>
             <div className="flex gap-2">
@@ -75,7 +61,7 @@ export default function Header() {
           </Link>
 
           <div className="flex items-center gap-4">
-       
+            {/* right side placeholder */}
           </div>
         </div>
       </div>
@@ -91,6 +77,7 @@ export default function Header() {
                 </Link>
               </li>
             ))}
+
             <li className="flex items-center justify-center gap-2 flex-1">
               <button 
                 onClick={toggleLang} 
@@ -115,6 +102,7 @@ export default function Header() {
                 />
               </button>
             </li>
+
             <li className="flex-1 text-center">
               <button className="hover:text-white hover:bg-black hover:bg-opacity-20 hover:scale-110 transition-all duration-300 ease-in-out transform p-2 rounded-sm" aria-label="search">
                 <svg className="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">

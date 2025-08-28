@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { LanguageContext } from '../contexts/LanguageContext'
 
 export default function Hero() {
+  const { lang } = useContext(LanguageContext)
   return (
     <section className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
       <div className="relative h-[520px] md:h-[620px] lg:h-[720px] overflow-hidden">
@@ -18,9 +20,19 @@ export default function Hero() {
         <div className="relative z-10 flex items-center justify-center h-full px-6 text-center">
           <div className="max-w-4xl">
             <h1 className="text-white uppercase font-extrabold text-4xl md:text-6xl lg:text-7xl tracking-wide leading-tight">
-              ILUMINANDO EL PRESENTE Y
-              <br />
-              FUTURO DE LA ISLA
+              {lang === 'es' ? (
+                <>
+                  ILUMINANDO EL PRESENTE Y
+                  <br />
+                  FUTURO DE LA ISLA
+                </>
+              ) : (
+                <>
+                  ILLUMINATING THE PRESENT AND
+                  <br />
+                  FUTURE OF THE ISLAND
+                </>
+              )}
             </h1>
 
             <div className="mt-8">
@@ -28,7 +40,7 @@ export default function Hero() {
                 href="#services"
                 className="inline-block bg-[#4fd23f] text-black font-semibold px-6 py-3 rounded shadow hover:bg-[#45c235] transition-colors duration-200"
               >
-                Descubra mas
+                {lang === 'es' ? 'Descubra mas' : 'Discover more'}
               </a>
             </div>
           </div>

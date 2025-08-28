@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { LanguageContext } from '../contexts/LanguageContext'
 
 const THUMBS = [
   { src: '/gallery1.jpg', alt: 'Proyecto 1', fallback: 'https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop' },
@@ -8,6 +9,7 @@ const THUMBS = [
 
 export default function ProjectsGallery() {
   const [index, setIndex] = useState(0)
+  const { lang } = useContext(LanguageContext)
 
   function prev() { setIndex((i) => (i - 1 + THUMBS.length) % THUMBS.length) }
   function next() { setIndex((i) => (i + 1) % THUMBS.length) }
@@ -17,10 +19,10 @@ export default function ProjectsGallery() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div>
-            <h2 className="text-3xl font-bold mb-4">Impulsando el Desarrollo Sostenible de Utila</h2>
-            <p className="text-gray-600 mb-6">UPCO no solo provee energía, sino que también impulsa el crecimiento sostenible de Utila. Invertimos en un futuro energético mejor para nuestra comunidad.</p>
+            <h2 className="text-3xl font-bold mb-4">{lang === 'es' ? 'Impulsando el Desarrollo Sostenible de Utila' : 'Driving Utila\'s Sustainable Development'}</h2>
+            <p className="text-gray-600 mb-6">{lang === 'es' ? 'UPCO no solo provee energía, sino que también impulsa el crecimiento sostenible de Utila. Invertimos en un futuro energético mejor para nuestra comunidad.' : 'UPCO not only provides power but also drives Utila\'s sustainable growth. We invest in a better energy future for our community.'}</p>
 
-            <a className="inline-block bg-[#4fd23f] text-black font-semibold px-5 py-3 rounded shadow hover:bg-[#45c235] transition-colors" href="#projects">See All Projects</a>
+            <a className="inline-block bg-[#4fd23f] text-black font-semibold px-5 py-3 rounded shadow hover:bg-[#45c235] transition-colors" href="#projects">{lang === 'es' ? 'Ver todos los proyectos' : 'See All Projects'}</a>
 
             <div className="mt-8 flex gap-4 items-center">
               <div className="flex gap-3">
@@ -31,8 +33,8 @@ export default function ProjectsGallery() {
                 ))}
               </div>
               <div className="ml-4 text-sm text-gray-500">
-                <button onClick={prev} className="mr-4">↞ PREV</button>
-                <button onClick={next}>NEXT ↠</button>
+                <button onClick={prev} className="mr-4">↞ {lang === 'es' ? 'ANT' : 'PREV'}</button>
+                <button onClick={next}>{lang === 'es' ? 'SIG' : 'NEXT'} ↠</button>
               </div>
             </div>
           </div>

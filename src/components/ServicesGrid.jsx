@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { LanguageContext } from '../contexts/LanguageContext'
 
 const CARD = ({ title, children }) => (
   <article className="bg-white p-6 shadow-lg rounded">
@@ -20,21 +21,23 @@ const CARD = ({ title, children }) => (
 )
 
 export default function ServicesGrid() {
+  const { lang } = useContext(LanguageContext)
+
   return (
     <section className="py-16 bg-gray-50" aria-labelledby="services-heading">
       <div className="container mx-auto px-6">
         <div className="text-center mb-10">
-          <h2 id="services-heading" className="text-2xl md:text-3xl font-bold">Nuestros Servicios</h2>
-          <p className="text-sm text-gray-500 mt-2">Servicios de energía prepagada en la zona de Utila en Islas de la Bahia</p>
+          <h2 id="services-heading" className="text-2xl md:text-3xl font-bold">{lang === 'es' ? 'Nuestros Servicios' : 'Our Services'}</h2>
+          <p className="text-sm text-gray-500 mt-2">{lang === 'es' ? 'Servicios de energía prepagada en la zona de Utila en Islas de la Bahia' : 'Prepaid energy services in the Utila area of the Bay Islands'}</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <CARD title="Solicitud de Servicio">¿Se ha trasladado o piensa hacerlo? solicite su servicio con nosotros</CARD>
-          <CARD title="Pagos">Descubre las maneras de pago que puedes utilizar.</CARD>
-          <CARD title="Calcula tu Consumo">Descubre cuales serian tus gastos base contactanos</CARD>
-          <CARD title="Equipo Comercial">Proveemos equipo para la distribución de energía a negocios</CARD>
-          <CARD title="Equipo para el Hogar">Equipo de distribución energetico para uso privado</CARD>
-          <CARD title="Otros Productos">Producción energetica y metodos de distribución</CARD>
+          <CARD title={lang === 'es' ? 'Solicitud de Servicio' : 'Service Request'}>{lang === 'es' ? '¿Se ha trasladado o piensa hacerlo? solicite su servicio con nosotros' : 'Moving or planning to move? Request service with us'}</CARD>
+          <CARD title={lang === 'es' ? 'Pagos' : 'Payments'}>{lang === 'es' ? 'Descubre las maneras de pago que puedes utilizar.' : 'Discover the payment methods you can use.'}</CARD>
+          <CARD title={lang === 'es' ? 'Calcula tu Consumo' : 'Calculate Your Consumption'}>{lang === 'es' ? 'Descubre cuales serian tus gastos base contactanos' : 'Find out what your base costs would be, contact us'}</CARD>
+          <CARD title={lang === 'es' ? 'Equipo Comercial' : 'Commercial Equipment'}>{lang === 'es' ? 'Proveemos equipo para la distribución de energía a negocios' : 'We provide equipment for energy distribution to businesses'}</CARD>
+          <CARD title={lang === 'es' ? 'Equipo para el Hogar' : 'Home Equipment'}>{lang === 'es' ? 'Equipo de distribucion energetico para uso privado' : 'Energy distribution equipment for private use'}</CARD>
+          <CARD title={lang === 'es' ? 'Otros Productos' : 'Other Products'}>{lang === 'es' ? 'Produccion energetica y metodos de distribucion' : 'Energy production and distribution methods'}</CARD>
         </div>
       </div>
     </section>
