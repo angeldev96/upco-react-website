@@ -1,20 +1,64 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect, useRef } from 'react'
 import { LanguageContext } from '../contexts/LanguageContext'
 import useReveal from '../hooks/useReveal'
+import { IconChevronLeft, IconChevronRight, IconX } from '@tabler/icons-react'
 
 const THUMBS = [
-  { src: '/gallery1.jpg', alt: 'Proyecto 1', fallback: 'https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop' },
-  { src: '/gallery2.jpg', alt: 'Proyecto 2', fallback: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop' },
-  { src: '/gallery3.jpg', alt: 'Proyecto 3', fallback: 'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1200&auto=format&fit=crop' },
+  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372621/photo_2025-08-28_02-06-23_m7pylu.jpg', alt: 'Proyecto 1', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372621/photo_2025-08-28_02-06-23_m7pylu.jpg' },
+  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2_2025-08-28_02-07-03_cjh1om.jpg', alt: 'Proyecto 2', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2_2025-08-28_02-07-03_cjh1om.jpg' },
+  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-06-32_n3bme6.jpg', alt: 'Proyecto 3', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-06-32_n3bme6.jpg' },
+  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-06-36_pdtsmy.jpg', alt: 'Proyecto 4', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-06-36_pdtsmy.jpg' },
+  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-06-27_vdf9wx.jpg', alt: 'Proyecto 5', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-06-27_vdf9wx.jpg' },
+  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-06-30_yl7qus.jpg', alt: 'Proyecto 6', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-06-30_yl7qus.jpg' },
+  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-05-58_rro34y.jpg', alt: 'Proyecto 7', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-05-58_rro34y.jpg' },
+  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372615/photo_13_2025-08-28_02-07-03_tny0m4.jpg', alt: 'Proyecto 8', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372615/photo_13_2025-08-28_02-07-03_tny0m4.jpg' },
+  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372615/photo_7_2025-08-28_02-07-03_o5aopz.jpg', alt: 'Proyecto 9', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372615/photo_7_2025-08-28_02-07-03_o5aopz.jpg' },
+  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372615/photo_6_2025-08-28_02-07-03_nejpao.jpg', alt: 'Proyecto 10', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372615/photo_6_2025-08-28_02-07-03_nejpao.jpg' },
 ]
+
+// We already use full Cloudinary URLs in `THUMBS`.
 
 export default function ProjectsGallery() {
   const [index, setIndex] = useState(0)
   const { lang } = useContext(LanguageContext)
   const ref = useReveal()
+  // autoplay runs continuously
+  const autoRef = useRef(null)
+  const touchStartX = useRef(0)
+  const touchEndX = useRef(0)
+
+  // autoplay always (no pause on hover)
+  useEffect(() => {
+    if (autoRef.current) clearInterval(autoRef.current)
+    autoRef.current = setInterval(() => setIndex((i) => (i + 1) % THUMBS.length), 4500)
+    return () => clearInterval(autoRef.current)
+  }, [])
+
+  function handleTouchStart(e) { touchStartX.current = e.touches[0].clientX }
+  function handleTouchMove(e) { touchEndX.current = e.touches[0].clientX }
+  function handleTouchEnd() {
+    const delta = touchStartX.current - touchEndX.current
+    if (Math.abs(delta) > 50) {
+      if (delta > 0) setIndex((i) => (i + 1) % THUMBS.length)
+      else setIndex((i) => (i - 1 + THUMBS.length) % THUMBS.length)
+    }
+  }
 
   function prev() { setIndex((i) => (i - 1 + THUMBS.length) % THUMBS.length) }
   function next() { setIndex((i) => (i + 1) % THUMBS.length) }
+  const [previewOpen, setPreviewOpen] = useState(false)
+
+  // keyboard handlers for modal navigation/close
+  useEffect(() => {
+    function onKey(e) {
+      if (!previewOpen) return
+      if (e.key === 'Escape') setPreviewOpen(false)
+      if (e.key === 'ArrowRight') next()
+      if (e.key === 'ArrowLeft') prev()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [previewOpen])
 
   return (
   <section ref={ref} className="py-12 reveal" aria-labelledby="projects-heading">
@@ -28,11 +72,14 @@ export default function ProjectsGallery() {
 
             <div className="mt-8 flex gap-4 items-center">
               <div className="flex gap-3">
-                {THUMBS.map((t, i) => (
-                  <button key={i} onClick={() => setIndex(i)} className={`w-24 h-16 overflow-hidden rounded shadow ${i===index? 'ring-2 ring-[#4fd23f]': ''}`}>
-                    <img src={t.src} alt={t.alt} onError={(e)=>{ e.currentTarget.src = t.fallback }} className="w-full h-full object-cover" />
-                  </button>
-                ))}
+                {THUMBS.map((t, i) => {
+                  const thumbSrc = t.src || t.fallback
+                  return (
+                    <button key={i} onClick={() => setIndex(i)} className={`w-24 h-16 overflow-hidden rounded shadow ${i===index? 'ring-2 ring-[#4fd23f]': ''}`}>
+                      <img src={thumbSrc} alt={t.alt} onError={(e)=>{ e.currentTarget.src = t.fallback }} className="w-full h-full object-cover" />
+                    </button>
+                  )
+                })}
               </div>
               <div className="ml-4 text-sm text-gray-500">
                 <button onClick={prev} className="mr-4">↞ {lang === 'es' ? 'ANT' : 'PREV'}</button>
@@ -42,12 +89,84 @@ export default function ProjectsGallery() {
           </div>
 
           <div className="flex justify-center">
-            <div className="w-full max-w-xl shadow-lg">
-              <img src={THUMBS[index].src} alt={THUMBS[index].alt} onError={(e)=>{ e.currentTarget.src = THUMBS[index].fallback }} className="w-full h-80 object-cover rounded" />
+            <div
+              className="w-full max-w-xl shadow-lg relative overflow-hidden rounded"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              {/* Sliding track */}
+              <div className="carousel-stage h-80 overflow-hidden">
+                <div
+                  className="carousel-track flex h-80"
+                  style={{
+                    width: `${THUMBS.length * 100}%`,
+                    transform: `translateX(-${index * (100 / THUMBS.length)}%)`,
+                    transition: 'transform 600ms ease',
+                  }}
+                >
+                  {THUMBS.map((t, i) => (
+                    <div
+                      key={i}
+                      className="carousel-slide h-80"
+                      style={{ width: `${100 / THUMBS.length}%`, pointerEvents: i === index ? 'auto' : 'none' }}
+                      onClick={() => setPreviewOpen(true)}
+                    >
+                      <img src={t.src || t.fallback} alt={t.alt} onError={(e) => { e.currentTarget.src = t.fallback }} className="w-full h-80 object-cover block" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Left/Right controls */}
+              <button
+                aria-label={lang === 'es' ? 'Anterior' : 'Previous'}
+                onClick={prev}
+                className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60"
+              >
+                <IconChevronLeft size={20} stroke={1.6} />
+              </button>
+
+              <button
+                aria-label={lang === 'es' ? 'Siguiente' : 'Next'}
+                onClick={next}
+                className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60"
+              >
+                <IconChevronRight size={20} stroke={1.6} />
+              </button>
+
+              {/* Dots */}
+              <div className="absolute left-1/2 -translate-x-1/2 bottom-3 flex gap-2">
+                {THUMBS.map((_, i) => (
+                  <button key={i} onClick={() => setIndex(i)} aria-label={`Go to ${i + 1}`} className={`w-2 h-2 rounded-full ${i === index ? 'bg-white' : 'bg-white/40'}`} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </div>
+      {previewOpen && (
+        <div className="gallery-modal" onClick={() => setPreviewOpen(false)}>
+            <div className="modal-inner" onClick={(e) => e.stopPropagation()}>
+            <button className="close-btn" onClick={() => setPreviewOpen(false)} aria-label="close">
+              <IconX size={28} stroke={1.6} className="text-white bg-black/60 p-2 rounded-full" />
+            </button>
+            <div className="flex items-center gap-6 justify-center">
+              <button onClick={() => { prev() }} aria-label="prev" className="p-2 text-white bg-black/30 rounded-l">
+                <IconChevronLeft size={28} stroke={1.6} />
+              </button>
+
+              <div style={{ maxWidth: '90vw', maxHeight: '80vh' }}>
+                <img src={THUMBS[index].src || THUMBS[index].fallback} alt={THUMBS[index].alt} style={{ maxWidth: '100%', maxHeight: '80vh' }} />
+              </div>
+
+              <button onClick={() => { next() }} aria-label="next" className="p-2 text-white bg-black/30 rounded-r">
+                <IconChevronRight size={28} stroke={1.6} />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
