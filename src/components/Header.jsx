@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { LanguageContext } from '../contexts/LanguageContext'
+import { IconMenu2, IconX } from '@tabler/icons-react'
 
 const MENU = [
   { to: '/', es: 'INICIO', en: 'HOME' },
@@ -16,6 +17,7 @@ const MENU = [
 
 export default function Header() {
   const { lang, toggleLang } = useContext(LanguageContext)
+  const [open, setOpen] = useState(false)
 
   return (
     <header className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
@@ -67,50 +69,67 @@ export default function Header() {
       </div>
 
       {/* Navigation bar */}
-      <nav className="w-full" style={{backgroundColor: '#01c100'}}>
+      <nav className="w-full" style={{ backgroundColor: '#01c100' }}>
         <div className="w-full">
-          <ul className="flex justify-between items-center px-6 py-4 text-sm font-medium text-black">
-            {MENU.map((item) => (
-              <li key={item.to} className="flex-1 text-center">
-                <Link to={item.to} className="hover:text-white hover:bg-black hover:bg-opacity-20 transition-all duration-300 ease-in-out uppercase tracking-wide block py-2 px-1 rounded-sm transform hover:scale-105">
-                  {lang === 'es' ? item.es : item.en}
-                </Link>
-              </li>
-            ))}
+          <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+            {/* Desktop menu */}
+            <ul className="hidden md:flex justify-center items-center gap-2 text-sm font-medium text-black flex-1">
+              {MENU.map((item) => (
+                <li key={item.to} className="">
+                  <Link to={item.to} className="hover:text-white hover:bg-black hover:bg-opacity-20 transition-all duration-300 ease-in-out uppercase tracking-wide block py-2 px-3 rounded-sm transform hover:scale-105">
+                    {lang === 'es' ? item.es : item.en}
+                  </Link>
+                </li>
+              ))}
+            </ul>
 
-            <li className="flex items-center justify-center gap-2 flex-1">
-              <button 
-                onClick={toggleLang} 
-                aria-label="toggle language"
-                className="hover:opacity-80 hover:scale-110 transition-all duration-200 ease-in-out transform"
-              >
-                <img 
-                  src={lang === 'es' ? 'https://flagcdn.com/w20/hn.png' : 'https://flagcdn.com/w20/us.png'} 
-                  alt={lang === 'es' ? 'Honduras' : 'United States'} 
-                  className="w-7 h-auto"
-                />
-              </button>
-              <button 
-                onClick={toggleLang} 
-                aria-label="toggle language"
-                className="hover:opacity-80 hover:scale-110 transition-all duration-200 ease-in-out transform"
-              >
-                <img 
-                  src={lang === 'es' ? 'https://flagcdn.com/w20/us.png' : 'https://flagcdn.com/w20/hn.png'} 
-                  alt={lang === 'es' ? 'United States' : 'Honduras'} 
-                  className="w-7 h-auto"
-                />
-              </button>
-            </li>
+            {/* Right-side controls */}
+            <div className="flex items-center gap-3">
+              <div className="hidden md:flex items-center gap-2">
+                <button onClick={toggleLang} aria-label="toggle language" className="hover:opacity-80 hover:scale-110 transition-all duration-200">
+                  <img src={lang === 'es' ? 'https://flagcdn.com/w20/hn.png' : 'https://flagcdn.com/w20/us.png'} alt={lang === 'es' ? 'Honduras' : 'United States'} className="w-7 h-auto" />
+                </button>
+              </div>
 
-            <li className="flex-1 text-center">
-              <button className="hover:text-white hover:bg-black hover:bg-opacity-20 hover:scale-110 transition-all duration-300 ease-in-out transform p-2 rounded-sm" aria-label="search">
-                <svg className="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <button className="hidden md:inline-flex p-2 rounded-sm hover:text-white hover:bg-black hover:bg-opacity-20 transition-all" aria-label="search">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </button>
-            </li>
-          </ul>
+
+              {/* Mobile hamburger */}
+              <button className="md:hidden p-2 rounded-md bg-white/10" aria-label="menu" aria-expanded={open} onClick={() => setOpen((s) => !s)}>
+                {open ? <IconX size={20} stroke={1.8} /> : <IconMenu2 size={20} stroke={1.8} />}
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile panel */}
+          {open && (
+            <div className="md:hidden bg-[#01c100]">
+              <ul className="flex flex-col px-4 py-3 gap-1">
+                {MENU.map((item) => (
+                  <li key={item.to}>
+                    <Link
+                      to={item.to}
+                      onClick={() => setOpen(false)}
+                      className="block w-full text-center uppercase tracking-wide py-3 px-2 rounded hover:bg-black hover:bg-opacity-10"
+                    >
+                      {lang === 'es' ? item.es : item.en}
+                    </Link>
+                  </li>
+                ))}
+
+                <li>
+                  <div className="flex items-center justify-center gap-3 py-3">
+                    <button onClick={toggleLang} aria-label="toggle language" className="hover:opacity-90">
+                      <img src={lang === 'es' ? 'https://flagcdn.com/w20/hn.png' : 'https://flagcdn.com/w20/us.png'} alt="flag" className="w-7 h-auto" />
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </nav>
     </header>

@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { LanguageContext } from '../contexts/LanguageContext'
 import useReveal from '../hooks/useReveal'
+import { IconBrandFacebook, IconBrandInstagram } from '@tabler/icons-react'
 
 export default function Footer() {
   const { lang } = useContext(LanguageContext)
@@ -13,10 +14,12 @@ export default function Footer() {
           <img src="/upco.png" alt="UPCO" className="w-20 mb-4" />
           <p className="text-gray-400">{lang === 'es' ? 'UPCO está comprometido a proporcionarte soluciones energéticas. Únete a nuestro viaje hacia un mundo más sostenible.' : 'UPCO is committed to providing you with energy solutions. Join our journey towards a more sustainable world.'}</p>
           <div className="flex items-center gap-3 mt-4 text-gray-400">
-            <a href="#" aria-label="twitter" className="hover:text-white">X</a>
-            <a href="https://www.facebook.com/UtilaPowerCompany" target="_blank" rel="noreferrer" className="hover:text-white">f</a>
-            <a href="https://www.instagram.com/upco_hn/" target="_blank" rel="noreferrer" className="hover:text-white">ig</a>
-            <a href="#" className="hover:text-white">in</a>
+            <a href="https://www.facebook.com/UtilaPowerCompany" target="_blank" rel="noreferrer" aria-label="facebook" className="hover:text-white">
+              <IconBrandFacebook size={18} stroke={1.5} />
+            </a>
+            <a href="https://www.instagram.com/upco_hn/" target="_blank" rel="noreferrer" aria-label="instagram" className="hover:text-white">
+              <IconBrandInstagram size={18} stroke={1.5} />
+            </a>
           </div>
         </div>
 
