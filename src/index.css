@@ -53,6 +53,13 @@ header {
 .carousel-slide.active { pointer-events: auto; }
 .carousel-slide img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
+/* small helper to hide scrollbars for the thumbnails strip */
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* make sure track images resize nicely */
+.carousel-stage img { border-radius: 6px; }
+
 /* Modal preview */
 .gallery-modal { position: fixed; inset: 0; display:flex; align-items:center; justify-content:center; background: rgba(0,0,0,0.7); z-index: 50; }
 .gallery-modal .modal-inner { max-width: 95%; max-height: 95%; position: relative; }

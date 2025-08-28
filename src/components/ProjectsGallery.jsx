@@ -71,11 +71,11 @@ export default function ProjectsGallery() {
             <a className="inline-block bg-[#4fd23f] text-black font-semibold px-5 py-3 rounded shadow hover:bg-[#45c235] transition-colors" href="#projects">{lang === 'es' ? 'Ver todos los proyectos' : 'See All Projects'}</a>
 
             <div className="mt-8 flex gap-4 items-center">
-              <div className="flex gap-3">
+              <div className="flex gap-3 overflow-x-auto no-scrollbar py-1">
                 {THUMBS.map((t, i) => {
                   const thumbSrc = t.src || t.fallback
                   return (
-                    <button key={i} onClick={() => setIndex(i)} className={`w-24 h-16 overflow-hidden rounded shadow ${i===index? 'ring-2 ring-[#4fd23f]': ''}`}>
+                    <button key={i} onClick={() => setIndex(i)} className={`w-28 md:w-24 h-16 md:h-16 flex-shrink-0 overflow-hidden rounded shadow ${i===index? 'ring-2 ring-[#4fd23f]': ''}`}>
                       <img src={thumbSrc} alt={t.alt} onError={(e)=>{ e.currentTarget.src = t.fallback }} className="w-full h-full object-cover" />
                     </button>
                   )
@@ -90,13 +90,13 @@ export default function ProjectsGallery() {
 
           <div className="flex justify-center">
             <div
-              className="w-full max-w-xl shadow-lg relative overflow-hidden rounded"
+              className="w-full lg:max-w-xl shadow-lg relative overflow-hidden rounded"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
             >
               {/* Sliding track */}
-              <div className="carousel-stage h-80 overflow-hidden">
+              <div className="carousel-stage h-64 md:h-72 lg:h-80 overflow-hidden">
                 <div
                   className="carousel-track flex h-80"
                   style={{
@@ -108,11 +108,11 @@ export default function ProjectsGallery() {
                   {THUMBS.map((t, i) => (
                     <div
                       key={i}
-                      className="carousel-slide h-80"
+                      className="carousel-slide h-64 md:h-72 lg:h-80"
                       style={{ width: `${100 / THUMBS.length}%`, pointerEvents: i === index ? 'auto' : 'none' }}
                       onClick={() => setPreviewOpen(true)}
                     >
-                      <img src={t.src || t.fallback} alt={t.alt} onError={(e) => { e.currentTarget.src = t.fallback }} className="w-full h-80 object-cover block" />
+                      <img src={t.src || t.fallback} alt={t.alt} onError={(e) => { e.currentTarget.src = t.fallback }} className="w-full h-full object-cover block" />
                     </div>
                   ))}
                 </div>
