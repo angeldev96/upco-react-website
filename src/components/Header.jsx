@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useContext, useState } from 'react'
 import { LanguageContext } from '../contexts/LanguageContext'
+import Flag from 'react-world-flags'
 import { IconMenu2, IconX } from '@tabler/icons-react'
 
 const MENU = [
@@ -131,9 +132,24 @@ export default function Header() {
             {/* Right-side controls */}
             <div className="flex items-center gap-3">
               <div className="hidden md:flex items-center gap-2">
-                <button onClick={toggleLang} aria-label="toggle language" className="hover:opacity-80 hover:scale-110 transition-all duration-200">
-                  <img src={lang === 'es' ? 'https://flagcdn.com/w20/hn.png' : 'https://flagcdn.com/w20/us.png'} alt={lang === 'es' ? 'Honduras' : 'United States'} className="w-7 h-auto" />
-                </button>
+                {/* Two-flag toggle: shows both flags and highlights the active one */}
+                <div className="flex items-center bg-white/10 p-1 rounded-full">
+                  <button
+                    onClick={() => lang !== 'es' && toggleLang()}
+                    aria-pressed={lang === 'es'}
+                    aria-label="Seleccionar Español"
+                    className={`w-8 h-6 rounded-full overflow-hidden transition-transform duration-150 ${lang === 'es' ? 'ring-2 ring-white scale-105' : 'opacity-70'}`}>
+                    <Flag code="hn" height={20} className="w-full h-full object-cover" alt="Honduras" />
+                  </button>
+
+                  <button
+                    onClick={() => lang !== 'en' && toggleLang()}
+                    aria-pressed={lang === 'en'}
+                    aria-label="Select English"
+                    className={`w-8 h-6 rounded-full overflow-hidden ml-1 transition-transform duration-150 ${lang === 'en' ? 'ring-2 ring-white scale-105' : 'opacity-70'}`}>
+                    <Flag code="us" height={20} className="w-full h-full object-cover" alt="United States" />
+                  </button>
+                </div>
               </div>
 
               <button className="hidden md:inline-flex p-2 rounded-sm hover:text-white hover:bg-black hover:bg-opacity-20 transition-all" aria-label="search">
@@ -197,10 +213,24 @@ export default function Header() {
 
                 <li>
                   <div className="flex items-center justify-center gap-3 py-3">
-                    <button onClick={toggleLang} aria-label="toggle language" className="hover:opacity-90">
-                      <img src={lang === 'es' ? 'https://flagcdn.com/w20/hn.png' : 'https://flagcdn.com/w20/us.png'} alt="flag" className="w-7 h-auto" />
-                    </button>
-                  </div>
+                      <div className="flex items-center bg-white/10 p-1 rounded-full">
+                        <button
+                          onClick={() => { if (lang !== 'es') toggleLang(); setOpen(false); }}
+                          aria-pressed={lang === 'es'}
+                          aria-label="Seleccionar Español"
+                          className={`w-8 h-6 rounded-full overflow-hidden transition-transform duration-150 ${lang === 'es' ? 'ring-2 ring-white scale-105' : 'opacity-70'}`}>
+                          <Flag code="hn" height={20} className="w-full h-full object-cover" alt="Honduras" />
+                        </button>
+
+                        <button
+                          onClick={() => { if (lang !== 'en') toggleLang(); setOpen(false); }}
+                          aria-pressed={lang === 'en'}
+                          aria-label="Select English"
+                          className={`w-8 h-6 rounded-full overflow-hidden ml-1 transition-transform duration-150 ${lang === 'en' ? 'ring-2 ring-white scale-105' : 'opacity-70'}`}>
+                          <Flag code="us" height={20} className="w-full h-full object-cover" alt="United States" />
+                        </button>
+                      </div>
+                    </div>
                 </li>
               </ul>
             </div>
