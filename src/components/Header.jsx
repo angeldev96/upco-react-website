@@ -90,6 +90,7 @@ export default function Header() {
                   <div className="absolute left-0 top-full mt-0 bg-white shadow-lg rounded-md opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto translate-y-1 group-hover:translate-y-0 transition-all duration-200 ease-out min-w-[260px] z-50">
                     <ul className="py-2">
                       <li><Link to="/tarifas" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Tarifas vigentes' : 'Current Rates'}</Link></li>
+                      <li><Link to="/payments" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Métodos de Pago' : 'Payment Methods'}</Link></li>
                       <li><Link to="/procesos" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Procesos (Nuevos Servicios, descuentos tercera edad)' : 'Processes (New Services, senior discounts)'}</Link></li>
                       <li><Link to="/anonima" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Sección anónima' : 'Anonymous Section'}</Link></li>
                       <li><Link to="/reclamos" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Reclamos' : 'Complaints'}</Link></li>
