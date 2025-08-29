@@ -1,117 +1,145 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { LanguageContext } from '../contexts/LanguageContext'
+import { IconCash, IconBuildingBank, IconBrandPaypal } from '@tabler/icons-react'
 
 export default function Payments() {
   const { lang } = useContext(LanguageContext)
+  const [method, setMethod] = useState('online') // 'online' | 'cash'
 
   return (
-    <main className="container mx-auto px-6 py-16">
-      <h1 className="text-4xl font-bold mb-6">{lang === 'es' ? 'Métodos de Pago Flexibles y Seguros' : 'Flexible and Secure Payment Methods'}</h1>
+    <main className="py-16">
+      <div className="container mx-auto px-6">
+        <h1 className="text-4xl font-bold mb-6">
+          {lang === 'es' ? 'Métodos de Pago Flexibles y Seguros' : 'Flexible & Secure Payment Methods'}
+        </h1>
+        <p className="text-gray-600 mb-8">
+          {lang === 'es'
+            ? 'En UPCO, la compra de energía eléctrica es de manera prepago, y ofrecemos varias opciones para realizar tu pago de forma fácil y cómoda.'
+            : "At UPCO we sell prepaid energy. Choose a convenient payment method below to complete your purchase."}
+        </p>
 
-      <p className="mb-6">{lang === 'es'
-        ? 'Métodos de Pago para la Compra de Energía en UPCO'
-        : 'Payment methods for purchasing energy at UPCO'
-      }</p>
+        {/* Selector visual */}
+        <div className="mb-8">
+          <div className="flex gap-4 flex-col sm:flex-row">
+            <button
+              type="button"
+              onClick={() => setMethod('cash')}
+              aria-pressed={method === 'cash'}
+              className={`flex items-center gap-4 w-full sm:w-auto px-5 py-4 rounded-lg shadow transition
+                ${method === 'cash' ? 'ring-2 ring-[#4fd23f] bg-white' : 'bg-white/80 hover:shadow-md'}`}
+            >
+              <span className="p-2 bg-gray-100 rounded-full">
+                <IconCash size={28} />
+              </span>
+              <div className="text-left">
+                <div className="font-semibold">{lang === 'es' ? 'Pago en efectivo' : 'Cash Payment'}</div>
+                <div className="text-sm text-gray-500">{lang === 'es' ? 'Paga en nuestras oficinas.' : 'Pay in person at our offices.'}</div>
+              </div>
+            </button>
 
-      <section className="prose max-w-none">
-        {lang === 'es' ? (
-          <>
-            <p>En UPCO, la compra de energía eléctrica es de manera prepago, y ofrecemos varias opciones para realizar tu pago de forma fácil y cómoda.</p>
+            <button
+              type="button"
+              onClick={() => setMethod('online')}
+              aria-pressed={method === 'online'}
+              className={`flex items-center gap-4 w-full sm:w-auto px-5 py-4 rounded-lg shadow transition
+                ${method === 'online' ? 'ring-2 ring-[#4fd23f] bg-white' : 'bg-white/80 hover:shadow-md'}`}
+            >
+              <span className="p-2 bg-gray-100 rounded-full">
+                <IconBuildingBank size={28} />
+              </span>
+              <div className="text-left">
+                <div className="font-semibold">{lang === 'es' ? 'Pagos online (Transferencias)' : 'Online Payments (Transfers)'}</div>
+                <div className="text-sm text-gray-500">{lang === 'es' ? 'Transferencias bancarias y PayPal.' : 'Bank transfers and PayPal.'}</div>
+              </div>
+            </button>
+          </div>
+        </div>
 
-            <h2>Pago por Transferencia Bancaria (Banpais y ACH)</h2>
-            <p>Por favor, realiza tu transferencia bancaria al siguiente número de cuenta:</p>
-            <p><strong>No. Cuenta Banpais: 216000314357</strong></p>
-            <p>Una vez que hayas realizado el pago y tengas lista una imagen de tu comprobante, envíanosla para procesar tu compra.</p>
-            <p>Cabe recalcar que puedes transferir desde cualquier cuenta bancaria, no es necesario que sea de Banpais. También puedes usar ACH desde bancos como Atlántida, BAC, Ficohsa, entre otros.</p>
+        {/* Detalle según selección */}
+        <section className="bg-white rounded-lg shadow p-6">
+          {method === 'online' ? (
+            <div className="text-gray-800">
+              <h2 className="text-xl font-semibold mb-4">{lang === 'es' ? 'Transferencia Bancaria (Banpais y ACH)' : 'Bank Transfer (Banpais & ACH)'}</h2>
 
-            <h2>Pago por PayPal</h2>
-            <p>Si prefieres pagar con PayPal, sigue estos pasos:</p>
-            <ol>
-              <li>Ingresa a www.paypal.com y accede a tu cuenta.</li>
-              <li>Haz clic en la pestaña de «Dinero».</li>
-              <li>Selecciona «Enviar dinero».</li>
-              <li>Elige «Enviar dinero a amigos y familia» para evitar comisiones.</li>
-              <li>Introduce nuestro correo electrónico: trrnld@gmail.com.</li>
-              <li>Ingresa el monto que necesitas pagar y haz clic en «Continuar».</li>
-              <li>Haz clic en «Enviar dinero ahora».</li>
-              <li>Envía la página de confirmación a help@utilapowercompany.com.</li>
-            </ol>
+              <ol className="space-y-4 list-decimal list-inside">
+                <li>
+                  <strong>{lang === 'es' ? 'Realiza la transferencia' : 'Make the transfer'}</strong>
+                  <div>No. Cuenta Banpais: <span className="font-semibold">216000314357</span></div>
+                </li>
+                <li>
+                  <strong>{lang === 'es' ? 'Guarda el comprobante' : 'Save your receipt'}</strong>
+                  <div>{lang === 'es' ? 'Toma una foto clara del comprobante o captura de pantalla.' : 'Take a clear photo or screenshot of the confirmation.'}</div>
+                </li>
+                <li>
+                  <strong>{lang === 'es' ? 'Envíalo para procesar' : 'Send it to us to process'}</strong>
+                  <div className="flex gap-3 mt-2">
+                    <a href="https://wa.me/50488281644" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-[#4fd23f] text-black px-4 py-2 rounded font-semibold">
+                      {lang === 'es' ? 'Enviar por WhatsApp' : 'Send via WhatsApp'}
+                    </a>
+                    <a href="mailto:help@utilapowercompany.com" className="inline-flex items-center gap-2 border px-4 py-2 rounded">
+                      {lang === 'es' ? 'Enviar por correo' : 'Send by email'}
+                    </a>
+                  </div>
+                </li>
+                <li>
+                  <strong>{lang === 'es' ? 'Recibe tu código' : 'Receive your code'}</strong>
+                  <div>{lang === 'es' ? 'Procesaremos el pago y te enviaremos el código de energía inmediatamente.' : 'We will process the payment and send your energy code immediately.'}</div>
+                </li>
+              </ol>
 
-            <h2>Pago Presencial</h2>
-            <p>Si prefieres realizar tu pago en persona, puedes visitarnos en nuestras oficinas de atención al cliente:</p>
-            <h3>Oficina Principal (Barrio Hollands, Utila)</h3>
-            <p>Ubicada en el centro de Útila, calle principal de la isla, contiguo a Banco Atlántida.</p>
-            <p>🕒 Horario: Abierta los 365 días del año de 7:00 am a 7:00 pm, excepto el 25 de diciembre y el 1 de enero, cuando el horario es de 8:00 am a 5:00 pm.</p>
-            <p>📍 Ver ubicación en Google Maps</p>
+              <hr className="my-6" />
 
-            <h3>Oficina en Los Cayitos</h3>
-            <p>🕒 Horario: De lunes a sábado, de 8:30 am a 10:30 am y de 4:00 pm a 6:00 pm.</p>
-            <p>🌊 Acceso: Solo en lancha.</p>
+              <h3 className="text-lg font-semibold mb-3">{lang === 'es' ? 'Pago por PayPal' : 'PayPal'}</h3>
+              <ol className="space-y-3 list-decimal list-inside">
+                <li>{lang === 'es' ? 'Accede a www.paypal.com y entra en tu cuenta.' : 'Go to www.paypal.com and sign in.'}</li>
+                <li>{lang === 'es' ? 'Haz clic en "Dinero" y luego en "Enviar dinero".' : 'Open the "Money" tab and choose "Send money".'}</li>
+                <li>{lang === 'es' ? 'Selecciona "Enviar a amigos y familia" para evitar comisiones.' : 'Choose "Send to friends & family" to avoid fees.'}</li>
+                <li>{lang === 'es' ? 'Introduce: trrnld@gmail.com y envía el pago.' : 'Enter: trrnld@gmail.com and send the payment.'}</li>
+                <li>{lang === 'es' ? 'Envía la confirmación a help@utilapowercompany.com o por WhatsApp.' : 'Send the confirmation to help@utilapowercompany.com or via WhatsApp.'}</li>
+              </ol>
 
-            <h3>🔔 Importante:</h3>
-            <p>El pago presencial solo se acepta en efectivo.</p>
-            <p>Se puede pagar en lempiras o en dólares en buen estado (billetes limpios, sin rasgaduras ni marcas).</p>
-            <p>La tasa de cambio de dólar a lempira es de L 24.50.</p>
-            <p>Por favor, trae tu número de medidor y el monto a pagar al momento de tu visita. Una vez realizado el pago, se te entregará un recibo que contiene el código de energía comprada.</p>
+              <div className="mt-6">
+                <a href="https://wa.me/50488281644" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-[#4fd23f] text-black px-4 py-2 rounded font-semibold">
+                  <IconBrandPaypal size={18} /> {lang === 'es' ? 'Enviar comprobante por WhatsApp' : 'Send receipt via WhatsApp'}
+                </a>
+              </div>
+            </div>
+          ) : (
+            <div className="text-gray-800">
+              <h2 className="text-xl font-semibold mb-4">{lang === 'es' ? 'Pago Presencial' : 'In-person Payment'}</h2>
 
-            <h2>Envío de Comprobante de Pago</h2>
-            <p>Una vez realizada la transferencia, ya sea por Banpais o PayPal, envía tu comprobante de pago a través de:</p>
-            <ul>
-              <li>WhatsApp: <a href="https://wa.me/50488281644">https://wa.me/50488281644</a></li>
-              <li>Facebook Messenger de UPCO: <a href="https://www.facebook.com/UtilaPowerCompany/">https://www.facebook.com/UtilaPowerCompany/</a></li>
-            </ul>
+              <ol className="space-y-4 list-decimal list-inside">
+                <li>
+                  <strong>{lang === 'es' ? 'Visítanos' : 'Visit us'}</strong>
+                  <div>{lang === 'es' ? 'Oficina Principal (Barrio Hollands, Utila) — junto a Banco Atlántida.' : 'Main Office (Barrio Hollands, Utila) — next to Banco Atlántida.'}</div>
+                </li>
+                <li>
+                  <strong>{lang === 'es' ? 'Trae lo necesario' : 'Bring what you need'}</strong>
+                  <div>{lang === 'es' ? 'Número de medidor y el monto a pagar. Aceptamos Lempiras y USD en efectivo.' : 'Bring your meter number and payment amount. We accept Lempiras and USD in cash.'}</div>
+                </li>
+                <li>
+                  <strong>{lang === 'es' ? 'Recibe tu recibo' : 'Receive your receipt'}</strong>
+                  <div>{lang === 'es' ? 'Te entregaremos un recibo con el código de energía comprado.' : 'You will receive a receipt with the purchased energy code.'}</div>
+                </li>
+                <li>
+                  <strong>{lang === 'es' ? 'Horarios y acceso' : 'Hours & access'}</strong>
+                  <div>
+                    {lang === 'es'
+                      ? 'Oficina Principal: 7:00 am – 7:00 pm (todos los días). Oficina Los Cayitos: lunes–sábado, 8:30–10:30 y 16:00–18:00 (solo en lancha).'
+                      : 'Main Office: 7:00am–7:00pm daily. Los Cayitos Office: Mon–Sat 8:30–10:30 & 4:00–6:00 (boat access only).'}
+                  </div>
+                </li>
+              </ol>
 
-            <p>Así podremos procesar tu pago y enviarte tu código de energía de inmediato.</p>
-            <p>¡Gracias por confiar en UPCO!</p>
-          </>
-        ) : (
-          <>
-            <p>At UPCO, energy purchases are prepaid, and we offer several options to make your payment easy and convenient.</p>
-            <h2>Bank Transfer (Banpais and ACH)</h2>
-            <p>Please transfer to the following account number:</p>
-            <p><strong>Banpais Account No: 216000314357</strong></p>
-            <p>After payment, send an image of your receipt so we can process your purchase.</p>
-
-            <h2>PayPal</h2>
-            <p>If you prefer PayPal, follow these steps:</p>
-            <ol>
-              <li>Go to www.paypal.com and log in.</li>
-              <li>Click the "Money" tab.</li>
-              <li>Select "Send money".</li>
-              <li>Choose "Send money to friends and family" to avoid fees.</li>
-              <li>Enter our email: trrnld@gmail.com.</li>
-              <li>Enter the amount and click Continue.</li>
-              <li>Click Send money now.</li>
-              <li>Send the confirmation page to help@utilapowercompany.com.</li>
-            </ol>
-
-            <h2>In-person Payment</h2>
-            <p>If you prefer to pay in person, visit our customer service offices:</p>
-            <h3>Main Office (Barrio Hollands, Utila)</h3>
-            <p>Located in the center of Útila, main street, next to Banco Atlántida.</p>
-            <p>🕒 Hours: Open 365 days a year from 7:00 am to 7:00 pm, except Dec 25 and Jan 1 (8:00 am to 5:00 pm).</p>
-            <p>📍 View on Google Maps</p>
-
-            <h3>Los Cayitos Office</h3>
-            <p>🕒 Hours: Mon-Sat 8:30 am - 10:30 am and 4:00 pm - 6:00 pm.</p>
-            <p>🌊 Access: By boat only.</p>
-
-            <h3>🔔 Important:</h3>
-            <p>In-person payments accepted in cash only.</p>
-            <p>We accept lempiras or US dollars in good condition (clean bills, no tears or marks).</p>
-            <p>Exchange rate: L 24.50 per USD.</p>
-
-            <h2>Send Payment Receipt</h2>
-            <p>After transferring via Banpais or PayPal, send your receipt via:</p>
-            <ul>
-              <li>WhatsApp: <a href="https://wa.me/50488281644">https://wa.me/50488281644</a></li>
-              <li>Facebook Messenger: <a href="https://www.facebook.com/UtilaPowerCompany/">https://www.facebook.com/UtilaPowerCompany/</a></li>
-            </ul>
-
-            <p>We will process your payment and send your energy code immediately. Thank you for trusting UPCO!</p>
-          </>
-        )}
-      </section>
+              <div className="mt-6">
+                <a href="https://wa.me/50488281644" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-[#4fd23f] text-black px-4 py-2 rounded font-semibold">
+                  {lang === 'es' ? 'Contactar por WhatsApp' : 'Contact via WhatsApp'}
+                </a>
+              </div>
+            </div>
+          )}
+        </section>
+      </div>
     </main>
   )
 }
