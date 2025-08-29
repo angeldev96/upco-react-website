@@ -6,7 +6,7 @@ import { IconMenu2, IconX } from '@tabler/icons-react'
 
 const MENU = [
   { to: '/', es: 'INICIO', en: 'HOME' },
-  { to: '/payment', es: 'MÉTODOS DE PAGO', en: 'PAYMENT METHODS' },
+  { to: '/payments', es: 'MÉTODOS DE PAGO', en: 'PAYMENT METHODS' },
   { to: '/customer-service', es: 'ATENCIÓN AL CLIENTE', en: 'CUSTOMER SERVICE' },
   { to: '/news', es: 'NOTICIAS', en: 'NEWS' },
   { to: '/tariff', es: 'TARIFA', en: 'TARIFF' },
@@ -181,6 +181,7 @@ export default function Header() {
                   <div className="font-semibold uppercase py-2">{lang === 'es' ? 'Atención al Cliente' : 'Customer Service'}</div>
                   <ul className="pl-3">
                     <li><Link to="/tarifas" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Tarifas vigentes' : 'Current Rates'}</Link></li>
+                    <li><Link to="/payments" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Métodos de Pago' : 'Payment Methods'}</Link></li>
                     <li><Link to="/procesos" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Procesos' : 'Processes'}</Link></li>
                     <li><Link to="/anonima" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Sección anónima' : 'Anonymous Section'}</Link></li>
                     <li><Link to="/reclamos" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Reclamos' : 'Complaints'}</Link></li>
