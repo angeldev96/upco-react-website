@@ -2,19 +2,7 @@ import React, { useState, useContext, useEffect, useRef } from 'react'
 import { LanguageContext } from '../contexts/LanguageContext'
 import useReveal from '../hooks/useReveal'
 import { IconChevronLeft, IconChevronRight, IconX } from '@tabler/icons-react'
-
-const THUMBS = [
-  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372621/photo_2025-08-28_02-06-23_m7pylu.jpg', alt: 'Proyecto 1', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372621/photo_2025-08-28_02-06-23_m7pylu.jpg' },
-  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2_2025-08-28_02-07-03_cjh1om.jpg', alt: 'Proyecto 2', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2_2025-08-28_02-07-03_cjh1om.jpg' },
-  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-06-32_n3bme6.jpg', alt: 'Proyecto 3', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-06-32_n3bme6.jpg' },
-  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-06-36_pdtsmy.jpg', alt: 'Proyecto 4', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-06-36_pdtsmy.jpg' },
-  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-06-27_vdf9wx.jpg', alt: 'Proyecto 5', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-06-27_vdf9wx.jpg' },
-  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-06-30_yl7qus.jpg', alt: 'Proyecto 6', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-06-30_yl7qus.jpg' },
-  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-05-58_rro34y.jpg', alt: 'Proyecto 7', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372616/photo_2025-08-28_02-05-58_rro34y.jpg' },
-  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372615/photo_13_2025-08-28_02-07-03_tny0m4.jpg', alt: 'Proyecto 8', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372615/photo_13_2025-08-28_02-07-03_tny0m4.jpg' },
-  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372615/photo_7_2025-08-28_02-07-03_o5aopz.jpg', alt: 'Proyecto 9', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372615/photo_7_2025-08-28_02-07-03_o5aopz.jpg' },
-  { src: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372615/photo_6_2025-08-28_02-07-03_nejpao.jpg', alt: 'Proyecto 10', fallback: 'https://res.cloudinary.com/die0kcjrp/image/upload/v1756372615/photo_6_2025-08-28_02-07-03_nejpao.jpg' },
-]
+import { THUMBS } from '../data/galleryImages'
 
 // We already use full Cloudinary URLs in `THUMBS`.
 

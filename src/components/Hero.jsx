@@ -1,23 +1,33 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { LanguageContext } from '../contexts/LanguageContext'
 import useReveal from '../hooks/useReveal'
+import { THUMBS } from '../data/galleryImages'
 
 export default function Hero() {
   const { lang } = useContext(LanguageContext)
   const ref = useReveal()
+  const [bgIndex, setBgIndex] = useState(0)
+
+  useEffect(() => {
+    const id = setInterval(() => setBgIndex((i) => (i + 1) % THUMBS.length), 5000)
+    return () => clearInterval(id)
+  }, [])
   return (
     <section className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
       <div className="relative h-[520px] md:h-[620px] lg:h-[720px] overflow-hidden">
-        {/* Background image (cover) + subtle blur/dim */}
-        {/* Use a local hero image placed at /public/hero.jpg. If missing, the inline Unsplash URL will be used as fallback via CSS background-image on the container. */}
-        <img
-          src="/hero.jpg"
-          alt="Utila landscape"
-          onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&s=0a9f7b6b7b7b7b7b7b7b7b7b7b7b7b7b' }}
-          className="absolute inset-0 w-full h-full object-cover brightness-75"
-        />
+        {/* Background carousel using THUMBS */}
+        {THUMBS.map((t, i) => (
+          <img
+            key={i}
+            src={t.src || t.fallback}
+            alt={t.alt}
+            onError={(e) => { e.currentTarget.src = t.fallback }}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-800 ${i === bgIndex ? 'opacity-100' : 'opacity-0'}`}
+            style={{ zIndex: i === bgIndex ? 0 : -1 }}
+          />
+        ))}
 
-        <div className="absolute inset-0 bg-black/30" />
+  <div className="absolute inset-0 bg-black/30" />
 
         <div ref={ref} className="relative z-10 flex items-center justify-center h-full px-6 text-center reveal">
           <div className="max-w-4xl">
