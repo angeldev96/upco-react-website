@@ -120,7 +120,7 @@ export default function Header() {
                       <li><a href="https://wa.me/50488281644" className="block px-4 py-2 text-sm">WhatsApp</a></li>
                       <li><a href="https://facebook.com/UtilaPowerCompany" className="block px-4 py-2 text-sm">Facebook</a></li>
                       <li><a href="https://instagram.com/upco_hn" className="block px-4 py-2 text-sm">Instagram</a></li>
-                      <li><a href="https://t.me/" className="block px-4 py-2 text-sm">Telegram</a></li>
+                      <li><a href="https://t.me/+50488281644" className="block px-4 py-2 text-sm">Telegram</a></li>
                       <li><a href="mailto:info@upco.hn" className="block px-4 py-2 text-sm">Correo</a></li>
                       <li><a href="tel:+50488281644" className="block px-4 py-2 text-sm">Llamadas / Números fijos</a></li>
                     </ul>
@@ -206,7 +206,7 @@ export default function Header() {
                     <li><a href="https://wa.me/50488281644" className="block py-2">WhatsApp</a></li>
                     <li><a href="https://facebook.com/UtilaPowerCompany" className="block py-2">Facebook</a></li>
                     <li><a href="https://instagram.com/upco_hn" className="block py-2">Instagram</a></li>
-                    <li><a href="https://t.me/" className="block py-2">Telegram</a></li>
+                    <li><a href="https://t.me/+50488281644" className="block py-2">Telegram</a></li>
                     <li><a href="mailto:info@upco.hn" className="block py-2">Correo</a></li>
                     <li><a href="tel:+50488281644" className="block py-2">Llamadas / Números fijos</a></li>
                   </ul>
