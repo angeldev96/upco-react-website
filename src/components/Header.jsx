@@ -80,7 +80,7 @@ export default function Header() {
                   <button className="uppercase tracking-wide py-2 px-4 rounded-sm transition-transform">{lang === 'es' ? 'Inicio' : 'Home'}</button>
                   <div className="absolute left-0 top-full mt-0 bg-white shadow-lg rounded-md opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto translate-y-1 group-hover:translate-y-0 transition-all duration-200 ease-out min-w-[220px] z-50">
                     <ul className="py-2">
-                      <li><Link to="/" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Nosotros' : 'About Us'}</Link></li>
+                      <li><Link to="/about" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Nosotros' : 'About Us'}</Link></li>
                       <li><Link to="/gallery" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Imágenes' : 'Images'}</Link></li>
                     </ul>
                   </div>
@@ -172,7 +172,7 @@ export default function Header() {
                 <li>
                   <div className="font-semibold uppercase py-2">{lang === 'es' ? 'Inicio' : 'Home'}</div>
                   <ul className="pl-3">
-                    <li><Link to="/nosotros" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Nosotros' : 'About Us'}</Link></li>
+                    <li><Link to="/about" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Nosotros' : 'About Us'}</Link></li>
                     <li><Link to="/imagenes" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Imágenes' : 'Images'}</Link></li>
                   </ul>
                 </li>
