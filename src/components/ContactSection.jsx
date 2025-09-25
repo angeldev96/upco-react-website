@@ -22,7 +22,11 @@ export default function ContactSection() {
                 <div className="text-2xl text-[#0b5fa8]"><IconMapPin size={22} stroke={1.5} /></div>
                 <div>
                   <div className="font-semibold">{lang === 'es' ? 'OFICINA PRINCIPAL' : 'MAIN OFFICE'}</div>
-                  <div className="text-sm text-gray-500">Hollands Road, 34101 Utila, Islas de la Bahía</div>
+                  <div className="text-sm text-gray-500">
+                    <a href="https://maps.app.goo.gl/v25ibJjfDM34hd1cA" target="_blank" rel="noopener noreferrer" className="hover:underline" aria-label="Ver en Google Maps">
+                      Hollands Road, 34101 Utila, Islas de la Bahía
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -32,7 +36,11 @@ export default function ContactSection() {
                 <div className="text-2xl text-[#0b5fa8]"><IconPhone size={22} stroke={1.5} /></div>
                 <div>
                   <div className="font-semibold">{lang === 'es' ? 'LLÁMANOS' : 'CALL US'}</div>
-                  <div className="text-sm text-gray-500">Support: 88281644<br/>Office: 88281644<br/>WhatsApp: +504 8828-1644</div>
+                  <div className="text-sm text-gray-500">
+                    Support: <a href="tel:+50488281644" className="hover:underline">8828-1644</a><br/>
+                    Office: <a href="tel:+50488281644" className="hover:underline">8828-1644</a><br/>
+                    WhatsApp: <a href="https://wa.me/50488281644" target="_blank" rel="noopener noreferrer" className="hover:underline">+504 8828-1644</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -42,7 +50,7 @@ export default function ContactSection() {
                 <div className="text-2xl text-[#0b5fa8]"><IconMail size={22} stroke={1.5} /></div>
                 <div>
                   <div className="font-semibold">{lang === 'es' ? 'ESCRÍBENOS' : 'WRITE TO US'}</div>
-                  <div className="text-sm text-gray-500">help@utilapowercompany.com</div>
+                  <div className="text-sm text-gray-500"><a href="mailto:help@utilapowercompany.com" className="hover:underline">help@utilapowercompany.com</a></div>
                 </div>
               </div>
             </div>

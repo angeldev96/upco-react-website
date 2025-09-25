@@ -108,7 +108,7 @@ export default function Header() {
                     <ul className="py-2">
                       <li><Link to="/mantenimientos" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Mantenimientos' : 'Maintenance'}</Link></li>
                       <li><Link to="/eventos" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Eventos y comunicados' : 'Events & Notices'}</Link></li>
-                      <li><Link to="/campanas" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Contenido de campaña' : 'Campaign Content'}</Link></li>
+                      <li><Link to="/campanas" className="block px-4 py-2 text-sm">{lang === 'es' ? 'Campañas' : 'Campaigns'}</Link></li>
                     </ul>
                   </div>
                 </li>
@@ -121,7 +121,7 @@ export default function Header() {
                       <li><a href="https://facebook.com/UtilaPowerCompany" className="block px-4 py-2 text-sm">Facebook</a></li>
                       <li><a href="https://instagram.com/upco_hn" className="block px-4 py-2 text-sm">Instagram</a></li>
                       <li><a href="https://t.me/+50488281644" className="block px-4 py-2 text-sm">Telegram</a></li>
-                      <li><a href="mailto:info@upco.hn" className="block px-4 py-2 text-sm">Correo</a></li>
+                      <li><a href="mailto:help@utilapowercompany.com" className="block px-4 py-2 text-sm">Correo</a></li>
                       <li><a href="tel:+50488281644" className="block px-4 py-2 text-sm">Llamadas / Números fijos</a></li>
                     </ul>
                   </div>
@@ -196,7 +196,7 @@ export default function Header() {
                   <ul className="pl-3">
                     <li><Link to="/mantenimientos" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Mantenimientos' : 'Maintenance'}</Link></li>
                     <li><Link to="/eventos" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Eventos y comunicados' : 'Events & Notices'}</Link></li>
-                    <li><Link to="/campanas" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Contenido de campaña' : 'Campaign Content'}</Link></li>
+                    <li><Link to="/campanas" onClick={() => setOpen(false)} className="block py-2">{lang === 'es' ? 'Campañas' : 'Campaigns'}</Link></li>
                   </ul>
                 </li>
 
@@ -207,7 +207,7 @@ export default function Header() {
                     <li><a href="https://facebook.com/UtilaPowerCompany" className="block py-2">Facebook</a></li>
                     <li><a href="https://instagram.com/upco_hn" className="block py-2">Instagram</a></li>
                     <li><a href="https://t.me/+50488281644" className="block py-2">Telegram</a></li>
-                    <li><a href="mailto:info@upco.hn" className="block py-2">Correo</a></li>
+                    <li><a href="mailto:help@utilapowercompany.com" className="block py-2">Correo</a></li>
                     <li><a href="tel:+50488281644" className="block py-2">Llamadas / Números fijos</a></li>
                   </ul>
                 </li>
