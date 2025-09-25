@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { LanguageContext } from '../contexts/LanguageContext'
 import useReveal from '../hooks/useReveal'
 
-const CARD = ({ title, children }) => (
+const CARD = ({ title, children, to }) => (
   <article className="bg-white p-6 shadow-lg rounded">
     <div className="flex flex-col items-center text-center gap-4">
       <div className="w-16 h-16 flex items-center justify-center text-gray-700">
@@ -14,9 +15,15 @@ const CARD = ({ title, children }) => (
       </div>
       <h4 className="font-bold uppercase tracking-wide">{title}</h4>
       <p className="text-sm text-gray-500">{children}</p>
-      <a className="mt-4 inline-block bg-[#4fd23f] text-black font-semibold px-4 py-2 rounded shadow hover:bg-[#45c235] transition-colors" href="#">
-        Leer Mas
-      </a>
+      {to ? (
+        <Link to={to} className="mt-4 inline-block bg-[#4fd23f] text-black font-semibold px-4 py-2 rounded shadow hover:bg-[#45c235] transition-colors">
+          Leer Mas
+        </Link>
+      ) : (
+        <a className="mt-4 inline-block bg-[#4fd23f] text-black font-semibold px-4 py-2 rounded shadow hover:bg-[#45c235] transition-colors" href="#">
+          Leer Mas
+        </a>
+      )}
     </div>
   </article>
 )
@@ -35,8 +42,8 @@ export default function ServicesGrid() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <CARD title={lang === 'es' ? 'Solicitud de Servicio' : 'Service Request'}>{lang === 'es' ? '¿Se ha trasladado o piensa hacerlo? solicite su servicio con nosotros' : 'Moving or planning to move? Request service with us'}</CARD>
-          <CARD title={lang === 'es' ? 'Pagos' : 'Payments'}>{lang === 'es' ? 'Descubre las maneras de pago que puedes utilizar.' : 'Discover the payment methods you can use.'}</CARD>
-          <CARD title={lang === 'es' ? 'Calcula tu Consumo' : 'Calculate Your Consumption'}>{lang === 'es' ? 'Descubre cuales serian tus gastos base contactanos' : 'Find out what your base costs would be, contact us'}</CARD>
+          <CARD title={lang === 'es' ? 'Pagos' : 'Payments'} to="/payments">{lang === 'es' ? 'Descubre las maneras de pago que puedes utilizar.' : 'Discover the payment methods you can use.'}</CARD>
+          <CARD title={lang === 'es' ? 'Calcula tu Consumo' : 'Calculate Your Consumption'} to="/calculo-consumo">{lang === 'es' ? 'Descubre cuales serian tus gastos base contactanos' : 'Find out what your base costs would be, contact us'}</CARD>
           <CARD title={lang === 'es' ? 'Equipo Comercial' : 'Commercial Equipment'}>{lang === 'es' ? 'Proveemos equipo para la distribución de energía a negocios' : 'We provide equipment for energy distribution to businesses'}</CARD>
           <CARD title={lang === 'es' ? 'Equipo para el Hogar' : 'Home Equipment'}>{lang === 'es' ? 'Equipo de distribucion energetico para uso privado' : 'Energy distribution equipment for private use'}</CARD>
           <CARD title={lang === 'es' ? 'Otros Productos' : 'Other Products'}>{lang === 'es' ? 'Produccion energetica y metodos de distribucion' : 'Energy production and distribution methods'}</CARD>
