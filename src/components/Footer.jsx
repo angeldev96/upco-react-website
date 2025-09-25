@@ -10,7 +10,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#0b0b0b] text-gray-300">
-      <div ref={ref} className="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8 reveal">
+  <div ref={ref} className="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
         <div>
           <Link to="/" aria-label="Home" className="inline-block mb-4">
             <img src="/upco.png" alt="UPCO" className="w-20" />
@@ -64,14 +64,7 @@ export default function Footer() {
           <div className="mt-3 text-sm text-gray-400">🇺🇸 English<br/>🇪🇸 Español</div>
         </div>
 
-        <div>
-          <h4 className="text-white font-semibold mb-4">GALLERY</h4>
-          <div className="w-40 h-24 bg-gray-800">
-            <a href="/gallery" className="block w-full h-full">
-              <img src="/gallery1.jpg" alt="thumb" onError={(e)=>{ e.currentTarget.src='https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=600&auto=format&fit=crop' }} className="w-full h-full object-cover" />
-            </a>
-          </div>
-        </div>
+        
       </div>
 
       <div className="border-t border-[#0b5fa8]">

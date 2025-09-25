@@ -6,6 +6,7 @@ import Services from './pages/Services'
 import Payments from './pages/Payments'
 import Contact from './pages/Contact'
 import CalculoConsumo from './pages/CalculoConsumo'
+import Gallery from './pages/Gallery'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/payments" element={<Payments />} />
           <Route path="/calculo-consumo" element={<CalculoConsumo />} />
           <Route path="/contact" element={<Contact />} />

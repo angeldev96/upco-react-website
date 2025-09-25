@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { LanguageContext } from '../contexts/LanguageContext'
 import useReveal from '../hooks/useReveal'
 import { THUMBS } from '../data/galleryImages'
@@ -48,13 +49,13 @@ export default function Hero() {
             </h1>
 
             <div className="mt-8">
-              <a
-                href="#services"
+              <Link
+                to="/gallery"
                 className="inline-block bg-[#4fd23f] text-black font-semibold px-6 py-3 rounded shadow hover:bg-[#45c235] transition-colors duration-200 stagger-child"
                 style={{ transitionDelay: '200ms' }}
               >
                 {lang === 'es' ? 'Descubra mas' : 'Discover more'}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
