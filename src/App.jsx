@@ -8,6 +8,7 @@ import Contact from './pages/Contact'
 import CalculoConsumo from './pages/CalculoConsumo'
 import Gallery from './pages/Gallery'
 import Tarifas from './pages/Tarifas'
+import Oficinas from './pages/Oficinas'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/tarifas" element={<Tarifas />} />
+          <Route path="/oficinas" element={<Oficinas />} />
           <Route path="/payments" element={<Payments />} />
           <Route path="/calculo-consumo" element={<CalculoConsumo />} />
           <Route path="/contact" element={<Contact />} />
