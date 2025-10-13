@@ -1,4 +1,9 @@
+import React, { useContext } from 'react'
+import { LanguageContext } from '../contexts/LanguageContext'
+
 export default function About() {
+  const { lang } = useContext(LanguageContext)
+
   return (
     <main className="py-12">
       <div className="container mx-auto px-6">
@@ -18,11 +23,26 @@ export default function About() {
         {/* Intro + Media */}
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start mb-12">
           <div className="lg:col-span-2">
-            <h2 className="text-3xl font-bold mb-4">UPCO — Energía que impulsa a Útila</h2>
+            <h2 className="text-3xl font-bold mb-4">Energía que impulsa a Útila</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
-              UPCO es la empresa energética local dedicada a proveer suministro eléctrico seguro, accesible y responsable para la comunidad de Útila. Combinamos
-              generación diésel con soluciones fotovoltaicas y sistemas de respaldo para ofrecer una red fiable y preparada para el futuro.
+              Utila Power Company es la empresa encargada de suministrar el servicio eléctrico seguro, accesible y responsable en la isla de Útila. Combinamos generación diésel con soluciones fotovoltaicas y sistemas de respaldo, para ofrecer una red confiable y preparada para el futuro.
             </p>
+
+            {/* ¿Quiénes somos? */}
+            <section className="mb-6">
+              <h3 className="text-2xl font-semibold mb-2">{lang === 'es' ? '¿QUIÉNES SOMOS?' : 'WHO WE ARE'}</h3>
+              <p className="text-gray-700 mb-2">
+                {lang === 'es'
+                  ? 'Utila Power Company es la empresa encargada de la generación, distribución y comercialización de la energía eléctrica en la isla de Útila, brindando un servicio confiable y eficiente que impulsa el desarrollo económico y social de la comunidad.'
+                  : 'Utila Power Company is the company responsible for the generation, distribution and commercialization of electrical energy on the island of Utila, providing a reliable and efficient service that supports the island\'s economic and social development.'}
+              </p>
+
+              <p className="text-gray-700">
+                {lang === 'es'
+                  ? 'Nuestro compromiso es garantizar un suministro energético estable, sostenible y accesible, contribuyendo al bienestar de los hogares, comercios e instituciones de la isla. Como parte de nuestra visión de desarrollo responsable, impulsamos iniciativas que promueven la eficiencia energética y la conservación del medio ambiente, fortaleciendo la armonía entre el progreso y la naturaleza que nos rodea.'
+                  : 'Our commitment is to ensure a stable, sustainable and accessible energy supply, contributing to the wellbeing of households, businesses and institutions on the island. As part of our vision for responsible development, we promote initiatives that encourage energy efficiency and environmental conservation, strengthening harmony between progress and the surrounding nature.'}
+              </p>
+            </section>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>

@@ -23,8 +23,8 @@ export default function Header() {
   return (
     <header className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
       {/* Top info bar */}
-      <div className="bg-black text-white text-sm w-full">
-        <div className="w-full px-6 py-2 flex items-center justify-between">
+        <div className="text-white text-xs w-full" style={{ backgroundColor: '#00285b' }}>
+          <div className="w-full px-4 py-1 hidden sm:flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center gap-1">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -53,15 +53,15 @@ export default function Header() {
       </div>
 
       {/* Logo / header row */}
-      <div className="bg-black text-white w-full">
-        <div className="w-full px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3">
-            <img src="/upco.png" alt="UPCO Logo" className="w-16 h-16" />
-            <div>
-              <div className="text-3xl font-bold tracking-wide">UPCO</div>
-              <div className="text-sm text-gray-300 tracking-widest">UTILA POWER COMPANY</div>
-            </div>
-          </Link>
+        <div className="text-white w-full" style={{ backgroundColor: '#00285b' }}>
+          <div className="w-full px-3 py-1 flex items-center justify-between">
+            <Link to="/" className="flex items-center gap-3">
+              <img src="/upco.png" alt="UPCO Logo" className="w-10 h-10" />
+              <div>
+                <div className="text-xl font-bold tracking-wide">UPCO</div>
+                <div className="text-[10px] text-gray-300 tracking-widest">UTILA POWER COMPANY</div>
+              </div>
+            </Link>
 
           <div className="flex items-center gap-4">
             {/* right side placeholder */}
@@ -152,11 +152,7 @@ export default function Header() {
                 </div>
               </div>
 
-              <button className="hidden md:inline-flex p-2 rounded-sm hover:text-white hover:bg-black hover:bg-opacity-20 transition-all" aria-label="search">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </button>
+         
 
               {/* Mobile hamburger */}
               <button className="md:hidden p-2 rounded-md bg-white/10" aria-label="menu" aria-expanded={open} onClick={() => setOpen((s) => !s)}>
