@@ -3,31 +3,21 @@ import { LanguageContext } from '../contexts/LanguageContext'
 
 export default function CalculoConsumo() {
   const { lang } = useContext(LanguageContext)
-  const [voltage, setVoltage] = useState('')
-  const [current, setCurrent] = useState('')
   const [watts, setWatts] = useState('')
   const [hours, setHours] = useState('')
   const [result, setResult] = useState(null)
 
-  // Calculate power (W) from V and A if provided, else use watts input
+  // Compute kWh from watts and hours
   const compute = (e) => {
     e.preventDefault()
-    let powerW = 0
-    if (watts) {
-      powerW = parseFloat(watts)
-    } else if (voltage && current) {
-      powerW = parseFloat(voltage) * parseFloat(current)
-    }
-
+    const p = parseFloat(watts || 0)
     const h = parseFloat(hours || 0)
-    if (!powerW || !h) {
+    if (!p || !h) {
       setResult(null)
       return
     }
-
-    // kWh = (W * hours) / 1000
-    const kwh = (powerW * h) / 1000
-    setResult({ powerW, hours: h, kwh })
+    const kwh = (p * h) / 1000
+    setResult({ powerW: p, hours: h, kwh })
   }
 
   return (
@@ -40,46 +30,35 @@ export default function CalculoConsumo() {
 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           <div className="bg-white p-6 rounded shadow">
-            <h2 className="font-semibold mb-3">{lang === 'es' ? 'Fórmulas rápidas' : 'Quick formulas'}</h2>
-            <ul className="list-disc list-inside text-gray-700 space-y-2">
-              <li>{lang === 'es' ? 'Potencia (W) = Voltaje (V) × Corriente (A)' : 'Power (W) = Voltage (V) × Current (A)'}</li>
-              <li>{lang === 'es' ? 'Potencia (kW) = Potencia (W) / 1000' : 'Power (kW) = Power (W) / 1000'}</li>
-              <li>{lang === 'es' ? 'Consumo (kWh) = Potencia (kW) × Tiempo (horas)' : 'Consumption (kWh) = Power (kW) × Time (hours)'}</li>
-              <li>{lang === 'es' ? 'Equivalente práctico: kWh = (W × horas) / 1000' : 'Practical equivalent: kWh = (W × hours) / 1000'}</li>
-            </ul>
-            <p className="text-sm text-gray-600 mt-3">{lang === 'es' ? 'Ejemplo: una lámpara de 60 W encendida 5 horas consume (60 × 5) / 1000 = 0.3 kWh.' : 'Example: a 60 W lamp running for 5 hours consumes (60 × 5) / 1000 = 0.3 kWh.'}</p>
-            <p className="text-sm text-gray-600 mt-3">{lang === 'es' ? 'Nota: UPCO factura en kW·h (kilowatt-hora). A mayor tiempo de uso, mayor consumo.' : 'Note: UPCO bills in kWh (kilowatt-hour). The longer the use, the higher the consumption.'}</p>
+            <h2 className="font-semibold mb-3">{lang === 'es' ? 'Cómo encontrar la potencia (W)' : 'Where to find the power (W)'}</h2>
+            <p className="text-gray-700 mb-3">{lang === 'es'
+              ? 'Mira la etiqueta del electrodoméstico, la caja o el manual. Muchos aparatos (bombillas, ventiladores, microondas) indican su potencia en "W" (vatios).'
+              : 'Check the label on the device, the box or the manual. Many appliances (bulbs, fans, microwaves) show their power in "W" (watts).'}
+            </p>
+            <p className="text-sm text-gray-600">{lang === 'es' ? '¿Qué son los watts? Es una medida de cuánta energía usa un aparato por segundo; más watts = más consumo.' : 'What are watts? It measures how much power a device uses; more watts = more energy used.'}</p>
+            <p className="text-sm text-gray-600 mt-3">{lang === 'es' ? 'Ejemplo práctico: una bombilla de 60 W encendida 5 horas consume (60 × 5) / 1000 = 0.3 kWh.' : 'Practical example: a 60 W bulb on for 5 hours uses (60 × 5) / 1000 = 0.3 kWh.'}</p>
           </div>
 
           <form onSubmit={compute} className="bg-white p-6 rounded shadow">
 
-            <h2 className="font-semibold mb-3">{lang === 'es' ? 'Calculadora rápida' : 'Quick calculator'}</h2>
-            <p className="text-sm text-gray-600 mb-4">{lang === 'es' ? 'Rellena voltaje y corriente, o potencia en vatios (W), y horas de uso.' : 'Fill voltage and current, or power in watts (W), and hours of use.'}</p>
-
-            <label className="block text-sm font-medium">{lang === 'es' ? 'Voltaje (V)' : 'Voltage (V)'}</label>
-            <input value={voltage} onChange={(e) => setVoltage(e.target.value)} className="mt-1 mb-3 w-full border rounded px-3 py-2" placeholder={lang === 'es' ? 'ej. 120' : 'e.g. 120'} />
-
-            <label className="block text-sm font-medium">{lang === 'es' ? 'Corriente (A)' : 'Current (A)'}</label>
-            <input value={current} onChange={(e) => setCurrent(e.target.value)} className="mt-1 mb-3 w-full border rounded px-3 py-2" placeholder={lang === 'es' ? 'ej. 0.5' : 'e.g. 0.5'} />
-
-            <div className="text-sm text-gray-500 mb-3">{lang === 'es' ? 'o' : 'or'}</div>
+            <h2 className="font-semibold mb-3">{lang === 'es' ? 'Calculadora simple' : 'Simple calculator'}</h2>
+            <p className="text-sm text-gray-600 mb-4">{lang === 'es' ? 'Introduce la potencia del aparato en vatios (W) y las horas que lo usas.' : 'Enter the device power in watts (W) and the hours you use it.'}</p>
 
             <label className="block text-sm font-medium">{lang === 'es' ? 'Potencia (W)' : 'Power (W)'}</label>
             <input value={watts} onChange={(e) => setWatts(e.target.value)} className="mt-1 mb-3 w-full border rounded px-3 py-2" placeholder={lang === 'es' ? 'ej. 60' : 'e.g. 60'} />
 
-            <label className="block text-sm font-medium">{lang === 'es' ? 'Horas de uso' : 'Hours of use'}</label>
+            <label className="block text-sm font-medium">{lang === 'es' ? 'Horas de uso (por día)' : 'Hours of use (per day)'}</label>
             <input value={hours} onChange={(e) => setHours(e.target.value)} className="mt-1 mb-4 w-full border rounded px-3 py-2" placeholder={lang === 'es' ? 'ej. 5' : 'e.g. 5'} />
 
             <div className="flex gap-3">
               <button type="submit" className="bg-[#4fd23f] text-black px-4 py-2 rounded font-semibold">{lang === 'es' ? 'Calcular' : 'Calculate'}</button>
-              <button type="button" onClick={() => { setVoltage(''); setCurrent(''); setWatts(''); setHours(''); setResult(null) }} className="border px-4 py-2 rounded">{lang === 'es' ? 'Limpiar' : 'Clear'}</button>
+              <button type="button" onClick={() => { setWatts(''); setHours(''); setResult(null) }} className="border px-4 py-2 rounded">{lang === 'es' ? 'Limpiar' : 'Clear'}</button>
             </div>
 
             {result && (
               <div className="mt-6 bg-gray-50 p-4 rounded">
-                <div>{lang === 'es' ? 'Potencia calculada:' : 'Calculated power:'} <strong>{result.powerW} W</strong></div>
-                <div>{lang === 'es' ? 'Horas:' : 'Hours:'} <strong>{result.hours} h</strong></div>
-                <div className="mt-2">{lang === 'es' ? 'Consumo:' : 'Consumption:'} <strong>{result.kwh.toFixed(3)} kWh</strong></div>
+                <div>{lang === 'es' ? 'Consumo diario estimado:' : 'Estimated daily consumption:'} <strong>{result.kwh.toFixed(3)} kWh</strong></div>
+                <div className="mt-2 text-sm text-gray-600">{lang === 'es' ? 'Multiplica por la tarifa por kWh para estimar el coste.' : 'Multiply by your kWh rate to estimate cost.'}</div>
               </div>
             )}
           </form>
