@@ -47,21 +47,22 @@ export default function About() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <h3 className="text-xl font-semibold mb-2">Misión</h3>
-                <p className="text-gray-700">Ofrecer un suministro de energía confiable, eficiente y sostenible, que promueva el desarrollo económico y la calidad de vida en Útila.</p>
+                <p className="text-gray-700">Proveer un suministro de energía confiable, accesible y sostenible para la comunidad de Útila, mediante la generación y distribución de electricidad, fortaleciendo el crecimiento económico, el turismo y la calidad de vida en la isla. Con un enfoque en innovación y sostenibilidad, trabajamos constantemente en la optimización de nuestros procesos para minimizar el impacto ambiental y asegurar un futuro energético estable para las generaciones venideras.</p>
               </div>
 
               <div>
                 <h3 className="text-xl font-semibold mb-2">Visión</h3>
-                <p className="text-gray-700">Ser referentes regionales en soluciones energéticas integradas, liderando con innovación, seguridad y responsabilidad ambiental.</p>
+                <p className="text-gray-700">Ser referentes en la prestación de servicios energéticos de sistemas aislados en la región, destacándonos por nuestro enfoque en la sostenibilidad, innovación y responsabilidad social. </p>
               </div>
             </div>
 
             <div className="mt-8">
               <h3 className="text-xl font-semibold mb-3">Nuestros Valores</h3>
               <ul className="list-disc list-inside text-gray-700 space-y-2">
-                <li>Seguridad y servicio al cliente</li>
-                <li>Sostenibilidad e innovación</li>
-                <li>Transparencia y compromiso local</li>
+                <li>Servicio al cliente</li>
+                <li>Sostenibilidad</li>
+                <li>Compromiso</li>
+                <li>Innovación</li>
               </ul>
             </div>
 

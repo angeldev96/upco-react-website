@@ -27,11 +27,7 @@ export default function Tarifas() {
       <div className="container mx-auto px-6">
         <h1 className="text-4xl font-bold mb-6">{lang === 'es' ? 'Tarifas' : 'Rates'}</h1>
 
-        <p className="mb-4 text-gray-700">
-          {lang === 'es'
-            ? 'Aquí un resumen de las tarifas actuales de UPCO. Los precios están en Lempiras por kWh y pueden variar según temporada.'
-            : 'Here is a summary of UPCO current rates. Prices are in Lempiras per kWh and may vary by season.'}
-        </p>
+      
 
         <section className="bg-white rounded-lg shadow p-6">
           <h2 className="text-xl font-semibold mb-3">{lang === 'es' ? 'Tarifa actual' : 'Current rate'}</h2>
