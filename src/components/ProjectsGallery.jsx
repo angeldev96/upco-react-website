@@ -64,7 +64,7 @@ export default function ProjectsGallery() {
                   const thumbSrc = t.src || t.fallback
                   return (
                     <button key={i} onClick={() => setIndex(i)} className={`w-28 md:w-24 h-16 md:h-16 flex-shrink-0 overflow-hidden rounded shadow ${i===index? 'ring-2 ring-[#4fd23f]': ''}`}>
-                      <img src={thumbSrc} alt={t.alt} onError={(e)=>{ e.currentTarget.src = t.fallback }} className="w-full h-full object-cover" />
+                      <img src={thumbSrc} alt={lang === 'es' ? t.alt_es : t.alt_en} onError={(e)=>{ e.currentTarget.src = t.fallback }} className="w-full h-full object-cover" />
                     </button>
                   )
                 })}
@@ -145,7 +145,7 @@ export default function ProjectsGallery() {
               </button>
 
               <div style={{ maxWidth: '90vw', maxHeight: '80vh' }}>
-                <img src={THUMBS[index].src || THUMBS[index].fallback} alt={THUMBS[index].alt} style={{ maxWidth: '100%', maxHeight: '80vh' }} />
+                <img src={THUMBS[index].src || THUMBS[index].fallback} alt={lang === 'es' ? THUMBS[index].alt_es : THUMBS[index].alt_en} style={{ maxWidth: '100%', maxHeight: '80vh' }} />
               </div>
 
               <button onClick={() => { next() }} aria-label="next" className="p-2 text-white bg-black/30 rounded-r">

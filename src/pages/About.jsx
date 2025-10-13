@@ -11,11 +11,11 @@ export default function About() {
         <div className="bg-gray-800 text-white rounded-lg p-8 mb-10">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
-              <h1 className="text-3xl md:text-4xl font-extrabold">Sobre Nosotros - UPCO</h1>
-              <p className="text-sm text-gray-300 mt-2">Energía confiable y sostenible para la isla de Útila</p>
+              <h1 className="text-3xl md:text-4xl font-extrabold">{lang === 'es' ? 'Sobre Nosotros - UPCO' : 'About Us - UPCO'}</h1>
+              <p className="text-sm text-gray-300 mt-2">{lang === 'es' ? 'Energía confiable y sostenible para la isla de Útila' : 'Reliable and sustainable energy for the island of Utila'}</p>
             </div>
             <nav className="text-sm text-gray-200/80">
-              <span className="opacity-70">Home</span> <span className="text-[#4fd23f]">/</span> <span>Sobre Nosotros</span>
+              <span className="opacity-70">{lang === 'es' ? 'Inicio' : 'Home'}</span> <span className="text-[#4fd23f]">/</span> <span>{lang === 'es' ? 'Sobre Nosotros' : 'About Us'}</span>
             </nav>
           </div>
         </div>
@@ -23,9 +23,11 @@ export default function About() {
         {/* Intro + Media */}
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start mb-12">
           <div className="lg:col-span-2">
-            <h2 className="text-3xl font-bold mb-4">Energía que impulsa a Útila</h2>
+            <h2 className="text-3xl font-bold mb-4">{lang === 'es' ? 'Energía que impulsa a Útila' : "Energy powering Utila"}</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
-              Utila Power Company es la empresa encargada de suministrar el servicio eléctrico seguro, accesible y responsable en la isla de Útila. Combinamos generación diésel con soluciones fotovoltaicas y sistemas de respaldo, para ofrecer una red confiable y preparada para el futuro.
+              {lang === 'es'
+                ? 'Utila Power Company es la empresa encargada de suministrar el servicio eléctrico seguro, accesible y responsable en la isla de Útila. Combinamos generación diésel con soluciones fotovoltaicas y sistemas de respaldo, para ofrecer una red confiable y preparada para el futuro.'
+                : 'Utila Power Company is the company responsible for supplying safe, accessible, and responsible electrical service on the island of Utila. We combine diesel generation with photovoltaic solutions and backup systems to provide a reliable network prepared for the future.'}
             </p>
 
             {/* ¿Quiénes somos? */}
@@ -46,23 +48,27 @@ export default function About() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h3 className="text-xl font-semibold mb-2">Misión</h3>
-                <p className="text-gray-700">Proveer un suministro de energía confiable, accesible y sostenible para la comunidad de Útila, mediante la generación y distribución de electricidad, fortaleciendo el crecimiento económico, el turismo y la calidad de vida en la isla. Con un enfoque en innovación y sostenibilidad, trabajamos constantemente en la optimización de nuestros procesos para minimizar el impacto ambiental y asegurar un futuro energético estable para las generaciones venideras.</p>
+                <h3 className="text-xl font-semibold mb-2">{lang === 'es' ? 'Misión' : 'Mission'}</h3>
+                <p className="text-gray-700">{lang === 'es'
+                  ? 'Proveer un suministro de energía confiable, accesible y sostenible para la comunidad de Útila, mediante la generación y distribución de electricidad, fortaleciendo el crecimiento económico, el turismo y la calidad de vida en la isla. Con un enfoque en innovación y sostenibilidad, trabajamos constantemente en la optimización de nuestros procesos para minimizar el impacto ambiental y asegurar un futuro energético estable para las generaciones venideras.'
+                  : 'To provide a reliable, accessible and sustainable energy supply for the Utila community through power generation and distribution, strengthening economic growth, tourism and quality of life on the island. With a focus on innovation and sustainability, we continuously work to optimize our processes to minimize environmental impact and ensure a stable energy future for coming generations.'}</p>
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold mb-2">Visión</h3>
-                <p className="text-gray-700">Ser referentes en la prestación de servicios energéticos de sistemas aislados en la región, destacándonos por nuestro enfoque en la sostenibilidad, innovación y responsabilidad social. </p>
+                <h3 className="text-xl font-semibold mb-2">{lang === 'es' ? 'Visión' : 'Vision'}</h3>
+                <p className="text-gray-700">{lang === 'es'
+                  ? 'Ser referentes en la prestación de servicios energéticos de sistemas aislados en la región, destacándonos por nuestro enfoque en la sostenibilidad, innovación y responsabilidad social.'
+                  : 'To be a reference in the provision of isolated system energy services in the region, standing out for our focus on sustainability, innovation and social responsibility.'}</p>
               </div>
             </div>
 
             <div className="mt-8">
-              <h3 className="text-xl font-semibold mb-3">Nuestros Valores</h3>
+              <h3 className="text-xl font-semibold mb-3">{lang === 'es' ? 'Nuestros Valores' : 'Our Values'}</h3>
               <ul className="list-disc list-inside text-gray-700 space-y-2">
-                <li>Servicio al cliente</li>
-                <li>Sostenibilidad</li>
-                <li>Compromiso</li>
-                <li>Innovación</li>
+                <li>{lang === 'es' ? 'Servicio al cliente' : 'Customer service'}</li>
+                <li>{lang === 'es' ? 'Sostenibilidad' : 'Sustainability'}</li>
+                <li>{lang === 'es' ? 'Compromiso' : 'Commitment'}</li>
+                <li>{lang === 'es' ? 'Innovación' : 'Innovation'}</li>
               </ul>
             </div>
 
@@ -81,7 +87,7 @@ export default function About() {
 
         {/* Video section */}
         <section className="mb-16">
-          <h3 className="text-2xl font-semibold mb-4">Video Corporativo</h3>
+          <h3 className="text-2xl font-semibold mb-4">{lang === 'es' ? 'Video Corporativo' : 'Corporate Video'}</h3>
           <div className="bg-black rounded-lg overflow-hidden shadow">
             <video controls className="w-full h-auto max-h-[640px] bg-black">
               <source src="https://res.cloudinary.com/die0kcjrp/video/upload/v1757567038/Video_Corporativo_UPCO_baj4ou.mp4" type="video/mp4" />
@@ -92,11 +98,11 @@ export default function About() {
 
         {/* Footer note / small contact */}
         <section className="bg-gray-50 p-6 rounded-lg text-gray-700">
-          <h4 className="font-semibold mb-2">¿Necesitas ayuda para realizar un pago o solicitud?</h4>
-          <p className="mb-3">Comunícate por WhatsApp o visita nuestras oficinas. Estamos disponibles todos los días para ayudarte con tu servicio.</p>
+          <h4 className="font-semibold mb-2">{lang === 'es' ? '¿Necesitas ayuda para realizar un pago o solicitud?' : 'Need help making a payment or request?'}</h4>
+          <p className="mb-3">{lang === 'es' ? 'Comunícate por WhatsApp o visita nuestras oficinas. Estamos disponibles todos los días para ayudarte con tu servicio.' : 'Contact us via WhatsApp or visit our offices. We are available every day to assist with your service.'}</p>
           <div className="flex flex-wrap gap-3">
             <a href="https://wa.me/50488281644" className="inline-block bg-[#25D366] text-white px-4 py-2 rounded">WhatsApp</a>
-            <a href="/contact" className="inline-block border px-4 py-2 rounded">Contacto</a>
+            <a href="/contact" className="inline-block border px-4 py-2 rounded">{lang === 'es' ? 'Contacto' : 'Contact'}</a>
           </div>
         </section>
       </div>
