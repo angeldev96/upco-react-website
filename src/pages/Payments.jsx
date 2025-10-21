@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { LanguageContext } from '../contexts/LanguageContext'
-import { IconCash, IconBuildingBank, IconBrandPaypal } from '@tabler/icons-react'
+import { IconCash, IconBuildingBank, IconBrandPaypal, IconCamera, IconSend, IconKey, IconBrandWhatsapp, IconMail } from '@tabler/icons-react'
 
 export default function Payments() {
   const { lang } = useContext(LanguageContext)
@@ -62,28 +62,44 @@ export default function Payments() {
               <h2 className="text-xl font-semibold mb-4">{lang === 'es' ? 'Transferencia Bancaria (Banpais y ACH)' : 'Bank Transfer (Banpais & ACH)'}</h2>
 
               <ol className="space-y-4 list-decimal list-inside">
-                <li>
-                  <strong>{lang === 'es' ? 'Realiza la transferencia' : 'Make the transfer'}</strong>
-                  <div>No. Cuenta Banpais: <span className="font-semibold">216000314357</span></div>
-                </li>
-                <li>
-                  <strong>{lang === 'es' ? 'Guarda el comprobante' : 'Save your receipt'}</strong>
-                  <div>{lang === 'es' ? 'Toma una foto clara del comprobante o captura de pantalla.' : 'Take a clear photo or screenshot of the confirmation.'}</div>
-                </li>
-                <li>
-                  <strong>{lang === 'es' ? 'Envíalo para procesar' : 'Send it to us to process'}</strong>
-                  <div className="flex gap-3 mt-2">
-                    <a href="https://wa.me/50488281644" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-[#01c100] text-black px-4 py-2 rounded font-semibold">
-                      {lang === 'es' ? 'Enviar por WhatsApp' : 'Send via WhatsApp'}
-                    </a>
-                    <a href="mailto:help@utilapowercompany.com" className="inline-flex items-center gap-2 border px-4 py-2 rounded">
-                      {lang === 'es' ? 'Enviar por correo' : 'Send by email'}
-                    </a>
+                <li className="flex items-start gap-3">
+                  <div className="text-[#006bb1] mt-1"><IconBuildingBank size={20} /></div>
+                  <div>
+                    <strong>{lang === 'es' ? 'Realiza la transferencia' : 'Make the transfer'}</strong>
+                    <div>No. Cuenta Banpais: <span className="font-semibold">216000314357</span></div>
                   </div>
                 </li>
-                <li>
-                  <strong>{lang === 'es' ? 'Recibe tu código' : 'Receive your code'}</strong>
-                  <div>{lang === 'es' ? 'Procesaremos el pago y te enviaremos el código de energía inmediatamente.' : 'We will process the payment and send your energy code immediately.'}</div>
+
+                <li className="flex items-start gap-3">
+                  <div className="text-[#004a8e] mt-1"><IconCamera size={20} /></div>
+                  <div>
+                    <strong>{lang === 'es' ? 'Guarda el comprobante' : 'Save your receipt'}</strong>
+                    <div>{lang === 'es' ? 'Toma una foto clara del comprobante o captura de pantalla.' : 'Take a clear photo or screenshot of the confirmation.'}</div>
+                  </div>
+                </li>
+
+                <li className="flex items-start gap-3">
+                  <div className="text-[#01c100] mt-1"><IconSend size={20} /></div>
+                  <div>
+                    <strong>{lang === 'es' ? 'Envíalo para procesar' : 'Send it to us to process'}</strong>
+                    <div className="flex gap-3 mt-2 items-center">
+                      <a href="https://wa.me/50488281644" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-[#01c100] text-black px-4 py-2 rounded font-semibold">
+                        <IconBrandWhatsapp size={18} /> <span>{lang === 'es' ? 'Enviar por WhatsApp' : 'Send via WhatsApp'}</span>
+                      </a>
+
+                      <a href="mailto:help@utilapowercompany.com" className="inline-flex items-center gap-2 border px-4 py-2 rounded">
+                        <IconMail size={18} /> <span>{lang === 'es' ? 'Enviar por correo' : 'Send by email'}</span>
+                      </a>
+                    </div>
+                  </div>
+                </li>
+
+                <li className="flex items-start gap-3">
+                  <div className="text-[#62ce00] mt-1"><IconKey size={20} /></div>
+                  <div>
+                    <strong>{lang === 'es' ? 'Recibe tu código' : 'Receive your code'}</strong>
+                    <div>{lang === 'es' ? 'Procesaremos el pago y te enviaremos el código de energía inmediatamente.' : 'We will process the payment and send your energy code immediately.'}</div>
+                  </div>
                 </li>
               </ol>
 
