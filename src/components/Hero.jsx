@@ -51,7 +51,7 @@ export default function Hero() {
             <div className="mt-8">
               <Link
                 to="/gallery"
-                className="inline-block bg-[#4fd23f] text-black font-semibold px-6 py-3 rounded shadow hover:bg-[#45c235] transition-colors duration-200 stagger-child"
+                className="inline-block bg-[#01c100] text-black font-semibold px-6 py-3 rounded shadow hover:bg-[#62ce00] transition-colors duration-200 stagger-child"
                 style={{ transitionDelay: '200ms' }}
               >
                 {lang === 'es' ? 'Descubra mas' : 'Discover more'}

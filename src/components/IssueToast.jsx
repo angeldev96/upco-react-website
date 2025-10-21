@@ -20,8 +20,8 @@ export default function IssueToast() {
           </div>
 
           <div className="flex gap-2 mt-3">
-            <a href="https://wa.me/50488281644" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-[#4fd23f] text-black px-3 py-2 rounded font-semibold">
-              <IconBrandWhatsapp size={18} /> WhatsApp
+            <a href="https://wa.me/50488281644" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-[#01c100] text-black px-3 py-2 rounded font-semibold">
+              <IconBrandWhatsapp size={16} /> WhatsApp
             </a>
             <a href="https://t.me/+50488281644" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-blue-50 text-black px-3 py-2 rounded font-semibold">
               <IconBrandTelegram size={18} /> Telegram

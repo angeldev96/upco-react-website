@@ -26,7 +26,7 @@ export default function Payments() {
               onClick={() => setMethod('cash')}
               aria-pressed={method === 'cash'}
               className={`flex items-center gap-4 w-full sm:w-auto px-5 py-4 rounded-lg shadow transition
-                ${method === 'cash' ? 'ring-2 ring-[#4fd23f] bg-white' : 'bg-white/80 hover:shadow-md'}`}
+                ${method === 'cash' ? 'ring-2 ring-[#01c100] bg-white' : 'bg-white/80 hover:shadow-md'}`}
             >
               <span className="p-2 bg-gray-100 rounded-full">
                 <IconCash size={28} />
@@ -42,7 +42,7 @@ export default function Payments() {
               onClick={() => setMethod('online')}
               aria-pressed={method === 'online'}
               className={`flex items-center gap-4 w-full sm:w-auto px-5 py-4 rounded-lg shadow transition
-                ${method === 'online' ? 'ring-2 ring-[#4fd23f] bg-white' : 'bg-white/80 hover:shadow-md'}`}
+                ${method === 'online' ? 'ring-2 ring-[#01c100] bg-white' : 'bg-white/80 hover:shadow-md'}`}
             >
               <span className="p-2 bg-gray-100 rounded-full">
                 <IconBuildingBank size={28} />
@@ -73,7 +73,7 @@ export default function Payments() {
                 <li>
                   <strong>{lang === 'es' ? 'Envíalo para procesar' : 'Send it to us to process'}</strong>
                   <div className="flex gap-3 mt-2">
-                    <a href="https://wa.me/50488281644" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-[#4fd23f] text-black px-4 py-2 rounded font-semibold">
+                    <a href="https://wa.me/50488281644" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-[#01c100] text-black px-4 py-2 rounded font-semibold">
                       {lang === 'es' ? 'Enviar por WhatsApp' : 'Send via WhatsApp'}
                     </a>
                     <a href="mailto:help@utilapowercompany.com" className="inline-flex items-center gap-2 border px-4 py-2 rounded">
@@ -99,7 +99,7 @@ export default function Payments() {
               </ol>
 
               <div className="mt-6">
-                <a href="https://wa.me/50488281644" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-[#4fd23f] text-black px-4 py-2 rounded font-semibold">
+                <a href="https://wa.me/50488281644" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-[#01c100] text-black px-4 py-2 rounded font-semibold">
                   <IconBrandPaypal size={18} /> {lang === 'es' ? 'Enviar comprobante por WhatsApp' : 'Send receipt via WhatsApp'}
                 </a>
               </div>
@@ -132,7 +132,7 @@ export default function Payments() {
               </ol>
 
               <div className="mt-6">
-                <a href="https://wa.me/50488281644" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-[#4fd23f] text-black px-4 py-2 rounded font-semibold">
+                <a href="https://wa.me/50488281644" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-[#01c100] text-black px-4 py-2 rounded font-semibold">
                   {lang === 'es' ? 'Contactar por WhatsApp' : 'Contact via WhatsApp'}
                 </a>
               </div>

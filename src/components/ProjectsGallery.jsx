@@ -56,14 +56,14 @@ export default function ProjectsGallery() {
             <h2 className="text-3xl font-bold mb-4">{lang === 'es' ? 'Impulsando el Desarrollo Sostenible de Utila' : 'Driving Utila\'s Sustainable Development'}</h2>
             <p className="text-gray-600 mb-6">{lang === 'es' ? 'UPCO no solo provee energía, sino que también impulsa el crecimiento sostenible de Utila. Invertimos en un futuro energético mejor para nuestra comunidad.' : 'UPCO not only provides power but also drives Utila\'s sustainable growth. We invest in a better energy future for our community.'}</p>
 
-            <a className="inline-block bg-[#4fd23f] text-black font-semibold px-5 py-3 rounded shadow hover:bg-[#45c235] transition-colors" href="#projects">{lang === 'es' ? 'Ver todos los proyectos' : 'See All Projects'}</a>
+            <a className="inline-block bg-[#01c100] text-black font-semibold px-5 py-3 rounded shadow hover:bg-[#62ce00] transition-colors" href="#projects">{lang === 'es' ? 'Ver todos los proyectos' : 'See All Projects'}</a>
 
             <div className="mt-8 flex gap-4 items-center">
               <div className="flex gap-3 overflow-x-auto no-scrollbar py-1">
                 {THUMBS.map((t, i) => {
                   const thumbSrc = t.src || t.fallback
                   return (
-                    <button key={i} onClick={() => setIndex(i)} className={`w-28 md:w-24 h-16 md:h-16 flex-shrink-0 overflow-hidden rounded shadow ${i===index? 'ring-2 ring-[#4fd23f]': ''}`}>
+                    <button key={i} onClick={() => setIndex(i)} className={`w-28 md:w-24 h-16 md:h-16 flex-shrink-0 overflow-hidden rounded shadow ${i===index? 'ring-2 ring-[#01c100]': ''}`}>
                       <img src={thumbSrc} alt={lang === 'es' ? t.alt_es : t.alt_en} onError={(e)=>{ e.currentTarget.src = t.fallback }} className="w-full h-full object-cover" />
                     </button>
                   )

@@ -44,7 +44,7 @@ export default function Tarifas() {
           </p>
 
           <div className="mt-6">
-            <a href="/contact" className="inline-block bg-[#4fd23f] text-black px-4 py-2 rounded font-semibold">
+            <a href="/contact" className="inline-block bg-[#01c100] text-black px-4 py-2 rounded font-semibold">
               {lang === 'es' ? 'Contactar para más información' : 'Contact for more information'}
             </a>
           </div>
@@ -66,9 +66,9 @@ function Timeline({ lang }) {
   return (
     <div className="space-y-3">
       {items.map((it) => (
-        <div key={it.id} className="flex items-start gap-4">
+        <div className="flex items-start gap-4">
           <div className="flex-shrink-0 mt-1">
-            <div className={`w-3 h-3 rounded-full ${openId === it.id ? 'bg-[#4fd23f]' : 'bg-gray-400'}`}></div>
+            <div className={`w-3 h-3 rounded-full ${openId === it.id ? 'bg-[#01c100]' : 'bg-gray-400'}`}></div>
             <div className="w-px h-full bg-gray-200 mx-auto mt-2"></div>
           </div>
 

@@ -9,7 +9,7 @@ export default function Footer() {
   const ref = useReveal()
 
   return (
-    <footer className="bg-[#0b0b0b] text-gray-300">
+    <footer className="bg-[#00285b] text-gray-300">
   <div ref={ref} className="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
         <div>
           <Link to="/" aria-label="Home" className="inline-block mb-4">
@@ -67,7 +67,7 @@ export default function Footer() {
         
       </div>
 
-      <div className="border-t border-[#0b5fa8]">
+      <div className="border-t border-[#006bb1]">
         <div className="container mx-auto px-6 py-6 text-center text-gray-400 text-sm">© UPCO 2024 - {new Date().getFullYear()}. {lang === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}</div>
       </div>
     </footer>

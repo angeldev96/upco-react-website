@@ -39,7 +39,7 @@ export default function NewsSection() {
                   <div className="text-sm text-gray-400 mb-2">{p.date}</div>
                   <h3 className="font-semibold mb-2">{p.title}</h3>
                   <p className="text-sm text-gray-600 mb-4">{p.excerpt}</p>
-                  <a className="inline-block bg-[#4fd23f] text-black font-semibold px-4 py-2 rounded hover:bg-[#45c235] transition-colors" href="#">{lang === 'es' ? 'Leer mas' : 'Read more'}</a>
+                  <a className="inline-block bg-[#01c100] text-black font-semibold px-4 py-2 rounded hover:bg-[#62ce00] transition-colors" href="#">{lang === 'es' ? 'Leer mas' : 'Read more'}</a>
                 </div>
               </article>
             ))}

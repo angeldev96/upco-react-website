@@ -51,7 +51,7 @@ export default function CalculoConsumo() {
             <input value={hours} onChange={(e) => setHours(e.target.value)} className="mt-1 mb-4 w-full border rounded px-3 py-2" placeholder={lang === 'es' ? 'ej. 5' : 'e.g. 5'} />
 
             <div className="flex gap-3">
-              <button type="submit" className="bg-[#4fd23f] text-black px-4 py-2 rounded font-semibold">{lang === 'es' ? 'Calcular' : 'Calculate'}</button>
+              <button type="submit" className="bg-[#01c100] text-black px-4 py-2 rounded font-semibold">{lang === 'es' ? 'Calcular' : 'Calculate'}</button>
               <button type="button" onClick={() => { setWatts(''); setHours(''); setResult(null) }} className="border px-4 py-2 rounded">{lang === 'es' ? 'Limpiar' : 'Clear'}</button>
             </div>
 

@@ -15,7 +15,7 @@ export default function About() {
               <p className="text-sm text-gray-300 mt-2">{lang === 'es' ? 'Energía confiable y sostenible para la isla de Útila' : 'Reliable and sustainable energy for the island of Utila'}</p>
             </div>
             <nav className="text-sm text-gray-200/80">
-              <span className="opacity-70">{lang === 'es' ? 'Inicio' : 'Home'}</span> <span className="text-[#4fd23f]">/</span> <span>{lang === 'es' ? 'Sobre Nosotros' : 'About Us'}</span>
+              <span className="opacity-70">{lang === 'es' ? 'Inicio' : 'Home'}</span> <span className="text-[#01c100]">/</span> <span>{lang === 'es' ? 'Sobre Nosotros' : 'About Us'}</span>
             </nav>
           </div>
         </div>
@@ -101,7 +101,7 @@ export default function About() {
           <h4 className="font-semibold mb-2">{lang === 'es' ? '¿Necesitas ayuda para realizar un pago o solicitud?' : 'Need help making a payment or request?'}</h4>
           <p className="mb-3">{lang === 'es' ? 'Comunícate por WhatsApp o visita nuestras oficinas. Estamos disponibles todos los días para ayudarte con tu servicio.' : 'Contact us via WhatsApp or visit our offices. We are available every day to assist with your service.'}</p>
           <div className="flex flex-wrap gap-3">
-            <a href="https://wa.me/50488281644" className="inline-block bg-[#25D366] text-white px-4 py-2 rounded">WhatsApp</a>
+            <a href="https://wa.me/50488281644" className="inline-block bg-[#01c100] text-white px-4 py-2 rounded">WhatsApp</a>
             <a href="/contact" className="inline-block border px-4 py-2 rounded">{lang === 'es' ? 'Contacto' : 'Contact'}</a>
           </div>
         </section>

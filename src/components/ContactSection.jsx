@@ -19,7 +19,7 @@ export default function ContactSection() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
               <div className="flex items-start gap-4">
-                <div className="text-2xl text-[#0b5fa8]"><IconMapPin size={22} stroke={1.5} /></div>
+                <div className="text-2xl text-[#004a8e]"><IconMapPin size={22} stroke={1.5} /></div>
                 <div>
                   <div className="font-semibold">{lang === 'es' ? 'OFICINA PRINCIPAL' : 'MAIN OFFICE'}</div>
                   <div className="text-sm text-gray-500">
@@ -33,7 +33,7 @@ export default function ContactSection() {
 
             <div>
               <div className="flex items-start gap-4">
-                <div className="text-2xl text-[#0b5fa8]"><IconPhone size={22} stroke={1.5} /></div>
+                <div className="text-2xl text-[#004a8e]"><IconPhone size={22} stroke={1.5} /></div>
                 <div>
                   <div className="font-semibold">{lang === 'es' ? 'LLÁMANOS' : 'CALL US'}</div>
                   <div className="text-sm text-gray-500">
@@ -47,7 +47,7 @@ export default function ContactSection() {
 
             <div>
               <div className="flex items-start gap-4">
-                <div className="text-2xl text-[#0b5fa8]"><IconMail size={22} stroke={1.5} /></div>
+                <div className="text-2xl text-[#004a8e]"><IconMail size={22} stroke={1.5} /></div>
                 <div>
                   <div className="font-semibold">{lang === 'es' ? 'ESCRÍBENOS' : 'WRITE TO US'}</div>
                   <div className="text-sm text-gray-500"><a href="mailto:help@utilapowercompany.com" className="hover:underline">help@utilapowercompany.com</a></div>
@@ -66,9 +66,9 @@ export default function ContactSection() {
               target="_blank"
               rel="noreferrer"
               aria-label={lang === 'es' ? 'Contáctanos por WhatsApp' : 'Contact us on WhatsApp'}
-              className="inline-flex items-center gap-3 bg-[#4fd23f] text-black font-semibold px-5 py-3 rounded shadow hover:bg-[#45c235] transition-colors"
+              className="inline-flex items-center gap-3 bg-[#01c100] text-black font-semibold px-5 py-3 rounded shadow hover:bg-[#62ce00] transition-colors"
             >
-              <span className="inline-flex items-center justify-center w-8 h-8 bg-[#075E54] text-white rounded-full">
+              <span className="inline-flex items-center justify-center w-8 h-8 bg-[#01c100] text-white rounded-full">
                 <IconBrandWhatsapp size={16} stroke={1.5} />
               </span>
               <span>{lang === 'es' ? 'Contáctanos por WhatsApp' : 'Contact us on WhatsApp'}</span>

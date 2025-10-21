@@ -16,15 +16,15 @@ const CARD = ({ title, children, to, onOpen, lang }) => (
       <h4 className="font-bold uppercase tracking-wide">{title}</h4>
       <p className="text-sm text-gray-500">{children}</p>
       {to ? (
-        <Link to={to} className="mt-4 inline-block bg-[#4fd23f] text-black font-semibold px-4 py-2 rounded shadow hover:bg-[#45c235] transition-colors">
+        <Link to={to} className="mt-4 inline-block bg-[#01c100] text-black font-semibold px-4 py-2 rounded shadow hover:bg-[#62ce00] transition-colors">
           {lang === 'es' ? 'Leer más' : 'Read more'}
         </Link>
       ) : onOpen ? (
-        <button onClick={onOpen} className="mt-4 inline-block bg-[#4fd23f] text-black font-semibold px-4 py-2 rounded shadow hover:bg-[#45c235] transition-colors">
+        <button onClick={onOpen} className="mt-4 inline-block bg-[#01c100] text-black font-semibold px-4 py-2 rounded shadow hover:bg-[#62ce00] transition-colors">
           {lang === 'es' ? 'Leer más' : 'Read more'}
         </button>
       ) : (
-        <a className="mt-4 inline-block bg-[#4fd23f] text-black font-semibold px-4 py-2 rounded shadow hover:bg-[#45c235] transition-colors" href="#">
+        <a className="mt-4 inline-block bg-[#01c100] text-black font-semibold px-4 py-2 rounded shadow hover:bg-[#62ce00] transition-colors" href="#">
           {lang === 'es' ? 'Leer más' : 'Read more'}
         </a>
       )}
@@ -92,7 +92,7 @@ export default function ServicesGrid() {
                   </div>
 
                   <div className="mt-4">
-                    <a href="https://wa.me/50488281644" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#4fd23f] text-black px-4 py-2 rounded font-semibold">
+                    <a href="https://wa.me/50488281644" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#01c100] text-black px-4 py-2 rounded font-semibold">
                       {lang === 'es' ? 'Contactar por WhatsApp' : 'Contact via WhatsApp'}
                     </a>
                   </div>
