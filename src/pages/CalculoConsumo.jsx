@@ -94,7 +94,7 @@ export default function CalculoConsumo() {
 
         <section className="bg-white p-6 rounded shadow mb-6">
           <h3 className="font-semibold mb-2">{lang === 'es' ? 'Tabla de consumos aproximados' : 'Approximate consumption table'}</h3>
-          <p className="text-gray-700 mb-4">{lang === 'es' ? 'Valores aproximados de potencia y un estimado de horas por día. Puedes modificar las horas para ver el consumo y el coste diario según la tarifa.' : 'Approximate power values and estimated hours per day. You can edit the hours to see daily consumption and cost according to the tariff.'}</p>
+          <p className="text-gray-700 mb-4">{lang === 'es' ? 'Valores aproximados de potencia y un estimado de horas por día. Puedes modificar las horas y el consumo para ver el consumo y el coste diario según la tarifa.' : 'Approximate power values and estimated hours per day. You can edit the hours to see daily consumption and cost according to the tariff.'}</p>
 
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
