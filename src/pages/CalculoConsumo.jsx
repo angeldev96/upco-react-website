@@ -7,6 +7,34 @@ export default function CalculoConsumo() {
   const [hours, setHours] = useState('')
   const [result, setResult] = useState(null)
 
+  // Tarifa en Lempiras por kWh (constante del requerimiento)
+  const TARIFF = 11.20
+
+  // Lista básica de electrodomésticos con potencia aproximada (W) y horas por defecto
+  const defaultAppliances = [
+    { id: 'bombilla_60', name: lang === 'es' ? 'Bombilla 60 W' : '60 W bulb', watts: 60, hours: 5 },
+    { id: 'refrigerador', name: lang === 'es' ? 'Refrigerador' : 'Refrigerator', watts: 400, hours: 24 },
+    { id: 'televisor', name: lang === 'es' ? 'Televisor LED 32"' : 'TV LED 32"', watts: 75, hours: 4 },
+    { id: 'microondas', name: lang === 'es' ? 'Microondas' : 'Microwave', watts: 1000, hours: 0.5 },
+    { id: 'ventilador', name: lang === 'es' ? 'Ventilador' : 'Fan', watts: 60, hours: 8 },
+    { id: 'lavadora', name: lang === 'es' ? 'Lavadora' : 'Washing machine', watts: 500, hours: 1 },
+    { id: 'plancha', name: lang === 'es' ? 'Plancha' : 'Iron', watts: 1200, hours: 0.5 }
+  ]
+
+  // Estado para horas por electrodoméstico (editable por usuario)
+  const [applianceHours, setApplianceHours] = useState(() => {
+    const map = {}
+    defaultAppliances.forEach((a) => { map[a.id] = a.hours })
+    return map
+  })
+
+  // Estado para potencia editable por electrodoméstico
+  const [appliancePowers, setAppliancePowers] = useState(() => {
+    const map = {}
+    defaultAppliances.forEach((a) => { map[a.id] = a.watts })
+    return map
+  })
+
   // Compute kWh from watts and hours
   const compute = (e) => {
     e.preventDefault()
@@ -64,10 +92,89 @@ export default function CalculoConsumo() {
           </form>
         </section>
 
-        <section className="bg-white p-6 rounded shadow">
-          <h3 className="font-semibold mb-2">Resumen breve</h3>
-          <p className="text-gray-700">La empresa vende energía medida en kW (kilowatt). El consumo real depende del tiempo de uso: una potencia más alta o un mayor número de horas incrementa el consumo. Usa la calculadora para estimar el consumo y multiplicarlo por la tarifa por kWh para estimar el coste.</p>
+        <section className="bg-white p-6 rounded shadow mb-6">
+          <h3 className="font-semibold mb-2">{lang === 'es' ? 'Tabla de consumos aproximados' : 'Approximate consumption table'}</h3>
+          <p className="text-gray-700 mb-4">{lang === 'es' ? 'Valores aproximados de potencia y un estimado de horas por día. Puedes modificar las horas para ver el consumo y el coste diario según la tarifa.' : 'Approximate power values and estimated hours per day. You can edit the hours to see daily consumption and cost according to the tariff.'}</p>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="border-b">
+                  <th className="py-2">{lang === 'es' ? 'Electrodoméstico' : 'Appliance'}</th>
+                  <th className="py-2">{lang === 'es' ? 'Potencia (W)' : 'Power (W)'}</th>
+                  <th className="py-2">{lang === 'es' ? 'Horas/día' : 'Hours/day'}</th>
+                  <th className="py-2">kWh/día</th>
+                  <th className="py-2">{lang === 'es' ? 'Costo Lps/día' : 'Cost Lps/day'}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {defaultAppliances.map((app) => {
+                  const h = parseFloat(applianceHours[app.id] || 0)
+                  const power = parseFloat(appliancePowers[app.id] || 0)
+                  const kwh = (power * (h || 0)) / 1000
+                  const cost = kwh * TARIFF
+                  return (
+                    <tr key={app.id} className="border-b align-top">
+                      <td className="py-2">{app.name}</td>
+                      <td className="py-2">
+                        <input
+                          type="number"
+                          min="0"
+                          step="1"
+                          value={appliancePowers[app.id]}
+                          onChange={(e) => setAppliancePowers(prev => ({ ...prev, [app.id]: e.target.value }))}
+                          className="w-28 border rounded px-2 py-1"
+                        />
+                      </td>
+                      <td className="py-2">
+                        <input
+                          type="number"
+                          min="0"
+                          step="0.1"
+                          value={applianceHours[app.id]}
+                          onChange={(e) => setApplianceHours(prev => ({ ...prev, [app.id]: e.target.value }))}
+                          className="w-24 border rounded px-2 py-1"
+                        />
+                      </td>
+                      <td className="py-2">{kwh.toFixed(3)}</td>
+                      <td className="py-2">{cost.toFixed(2)} Lps</td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+              <tfoot>
+                <tr className="border-t font-semibold">
+                  <td className="py-2">{lang === 'es' ? 'Totales' : 'Totals'}</td>
+                  <td></td>
+                  <td></td>
+                  <td className="py-2">
+                    {(() => {
+                      const totalKwh = defaultAppliances.reduce((sum, app) => {
+                        const h = parseFloat(applianceHours[app.id] || 0)
+                        const power = parseFloat(appliancePowers[app.id] || 0)
+                        return sum + ((power * (h || 0)) / 1000)
+                      }, 0)
+                      return totalKwh.toFixed(3)
+                    })()}
+                  </td>
+                  <td className="py-2">
+                    {(() => {
+                      const totalKwh = defaultAppliances.reduce((sum, app) => {
+                        const h = parseFloat(applianceHours[app.id] || 0)
+                        const power = parseFloat(appliancePowers[app.id] || 0)
+                        return sum + ((power * (h || 0)) / 1000)
+                      }, 0)
+                      return (totalKwh * TARIFF).toFixed(2) + ' Lps'
+                    })()}
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <div className="text-sm text-gray-600 mt-3">{lang === 'es' ? `Tarifa usada: ${TARIFF} Lps/kWh` : `Tariff used: ${TARIFF} Lps/kWh`}</div>
         </section>
+
+   
       </div>
     </main>
   )
