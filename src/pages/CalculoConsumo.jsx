@@ -13,7 +13,7 @@ export default function CalculoConsumo() {
   // Lista básica de electrodomésticos con potencia aproximada (W) y horas por defecto
   const defaultAppliances = [
     { id: 'bombilla_60', name: lang === 'es' ? 'Bombilla 60 W' : '60 W bulb', watts: 60, hours: 5 },
-    { id: 'refrigerador', name: lang === 'es' ? 'Refrigerador' : 'Refrigerator', watts: 400, hours: 24 },
+    { id: 'refrigerador', name: lang === 'es' ? 'Refrigerador' : 'Refrigerator', watts: 500, hours: 24 },
     { id: 'televisor', name: lang === 'es' ? 'Televisor LED 32"' : 'TV LED 32"', watts: 75, hours: 4 },
     { id: 'microondas', name: lang === 'es' ? 'Microondas' : 'Microwave', watts: 1000, hours: 0.5 },
     { id: 'ventilador', name: lang === 'es' ? 'Ventilador' : 'Fan', watts: 60, hours: 8 },
